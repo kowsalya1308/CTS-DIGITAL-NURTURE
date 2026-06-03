@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 6 - Event Feedback with Events Handling</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #2c3e50;
+        }
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feedback-form {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+            background-color: #f0f8ff;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .info-box {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 3px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.1);
+            border-color: #3498db;
+        }
+        
+        .gallery-item.enlarged {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            width: 80vw;
+            height: 80vh;
+        }
+        
+        .gallery-item.enlarged img {
+            width: 100%;
+            height: 100%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 999;
+        }
+        
+        .overlay.show {
+            display: block;
+        }
+        
+        .event-details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .selected-fee {
+            font-size: 18px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #d5f4e6;
+            border-radius: 4px;
+        }
+        
+        .character-count {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .validation-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .validation-message.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+        
+        .validation-message.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Exercise 6: Event Feedback with Events Handling</h1>
+        <p>Practice blur, change, click, dblclick, and keyboard events</p>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <a href="index.html">Back to Home</a>
+        <a href="registration.html">Previous Exercise</a>
+        <a href="video.html">Next Exercise</a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main>
+        <section>
+            <h2>📋 Share Your Event Feedback</h2>
+            <div class="info-box">
+                <p><strong>Interact with the form below:</strong> All event handlers are working to provide real-time feedback and validation.</p>
+            </div>
+        </section>
+
+        <!-- Feedback Form -->
+        <div class="feedback-form">
+            <!-- Phone Number Field with onblur validation -->
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number (for contact) *</label>
+                <input 
+                    type="tel" 
+                    id="phoneNumber" 
+                    name="phoneNumber" 
+                    placeholder="(555) 123-4567" 
+                    onblur="validatePhoneNumber()">
+                <div id="phoneValidation" class="validation-message"></div>
+            </div>
+
+            <!-- Event Selection with onchange handler -->
+            <div class="form-group">
+                <label for="eventType">Which event did you attend? *</label>
+                <select id="eventType" name="eventType" onchange="displayEventFee()" required>
+                    <option value="">-- Select an Event --</option>
+                    <option value="festival">Summer Festival</option>
+                    <option value="farmers-market">Farmers Market</option>
+                    <option value="cleanup">Community Cleanup</option>
+                    <option value="sports">Youth Sports Day</option>
+                    <option value="art">Art Exhibition</option>
+                    <option value="workshop">Community Workshop</option>
+                </select>
+                <div id="feeDisplay"></div>
+            </div>
+
+            <!-- Rating Selection -->
+            <div class="form-group">
+                <label>How would you rate the event?</label>
+                <div>
+                    <label style="display: inline;">
+                        <input type="radio" name="rating" value="excellent" onchange="updateRatingDisplay()"> ⭐⭐⭐⭐⭐ Excellent
+                    </label><br>
+                    <label style="display: inline;">
+                        <input type="radio" name="rating" value="good" onchange="updateRatingDisplay()"> ⭐⭐⭐⭐ Good
+                    </label><br>
+                    <label style="display: inline;">
+                        <input type="radio" name="rating" value="average" onchange="updateRatingDisplay()"> ⭐⭐⭐ Average
+                    </label><br>
+                    <label style="display: inline;">
+                        <input type="radio" name="rating" value="poor" onchange="updateRatingDisplay()"> ⭐⭐ Poor
+                    </label>
+                </div>
+                <div id="ratingDisplay"></div>
+            </div>
+
+            <!-- Feedback Textarea with keyboard events -->
+            <div class="form-group">
+                <label for="feedbackText">Your Feedback (min 10 characters) *</label>
+                <textarea 
+                    id="feedbackText" 
+                    name="feedbackText" 
+                    placeholder="Share your thoughts and suggestions..."
+                    onkeyup="countCharacters()"
+                    onkeydown="handleKeyDown(event)"></textarea>
+                <div class="character-count">
+                    Characters: <span id="charCount">0</span> / Min: 10
+                </div>
+            </div>
+
+            <!-- Submit Button with onclick handler -->
+            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+            <div id="submitMessage" class="validation-message"></div>
+        </div>
+
+        <!-- Event Images with double-click to enlarge -->
+        <section style="margin-top: 30px;">
+            <h2>📸 Double-Click Images to Enlarge</h2>
+            <div class="gallery-preview">
+                <div class="gallery-item" ondblclick="enlargeImage(this)">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%233498db' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3E🎉 Festival%3C/text%3E%3C/svg%3E" 
+                         alt="Summer Festival" 
+                         title="Double-click to enlarge">
+                </div>
+                <div class="gallery-item" ondblclick="enlargeImage(this)">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%232ecc71' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3E🌾 Market%3C/text%3E%3C/svg%3E" 
+                         alt="Farmers Market" 
+                         title="Double-click to enlarge">
+                </div>
+                <div class="gallery-item" ondblclick="enlargeImage(this)">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23e74c3c' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3E♻️ Cleanup%3C/text%3E%3C/svg%3E" 
+                         alt="Community Cleanup" 
+                         title="Double-click to enlarge">
+                </div>
+            </div>
+        </section>
+
+        <!-- Overlay for enlarged images -->
+        <div class="overlay" id="overlay" onclick="shrinkImage()"></div>
+
+        <!-- Event Features Section -->
+        <section style="margin-top: 30px;">
+            <h2>Event Handlers Demonstrated</h2>
+            <ul>
+                <li><strong>onblur:</strong> Validates phone number when field loses focus</li>
+                <li><strong>onchange:</strong> Displays event fee when a different event is selected</li>
+                <li><strong>onkeyup:</strong> Counts characters in real-time as user types</li>
+                <li><strong>onkeydown:</strong> Captures key presses (Enter key handling)</li>
+                <li><strong>onclick:</strong> Submits feedback and validates input</li>
+                <li><strong>ondblclick:</strong> Enlarges image on double-click</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Local Community Event Portal. Exercise 6 - Feedback & Events</p>
+        <p><a href="index.html" style="color: #3498db;">Return to Main Portal</a></p>
+    </footer>
+
+    <!-- Overlay Click Handler -->
+    <script>
+        document.addEventListener('click', function(event) {
+            if (event.target.id === 'overlay') {
+                shrinkImage();
+            }
+        });
+    </script>
+
+    <!-- JavaScript Event Handlers -->
+    <script>
+        // Validate phone number on blur
+        function validatePhoneNumber() {
+            const phone = document.getElementById('phoneNumber').value;
+            const validation = document.getElementById('phoneValidation');
+            const phoneRegex = /^[\d\s\-\(\)]+$/;
+            
+            if (phone === '') {
+                validation.textContent = '';
+                validation.classList.remove('error', 'success');
+            } else if (phone.length < 10) {
+                validation.textContent = '❌ Phone number must be at least 10 digits';
+                validation.classList.remove('success');
+                validation.classList.add('error');
+            } else if (!phoneRegex.test(phone)) {
+                validation.textContent = '❌ Invalid phone format. Use digits, dashes, or parentheses.';
+                validation.classList.remove('success');
+                validation.classList.add('error');
+            } else {
+                validation.textContent = '✅ Phone number is valid';
+                validation.classList.remove('error');
+                validation.classList.add('success');
+            }
+            console.log('Phone validation triggered (onblur)');
+        }
+        
+        // Display event fee on change
+        function displayEventFee() {
+            const eventType = document.getElementById('eventType').value;
+            const feeDisplay = document.getElementById('feeDisplay');
+            const fees = {
+                'festival': '$15',
+                'farmers-market': 'Free',
+                'cleanup': 'Free',
+                'sports': '$20',
+                'art': '$10',
+                'workshop': '$25'
+            };
+            
+            if (eventType) {
+                feeDisplay.innerHTML = `<div class="selected-fee">💰 Registration Fee: ${fees[eventType]}</div>`;
+                console.log(`Event selected: ${eventType}, Fee: ${fees[eventType]} (onchange triggered)`);
+            } else {
+                feeDisplay.innerHTML = '';
+            }
+        }
+        
+        // Update rating display
+        function updateRatingDisplay() {
+            const rating = document.querySelector('input[name="rating"]:checked');
+            const ratingDisplay = document.getElementById('ratingDisplay');
+            
+            if (rating) {
+                const ratings = {
+                    'excellent': '🌟 Thank you! We\'re so glad you loved it!',
+                    'good': '👍 Great! We appreciate your feedback.',
+                    'average': '📊 We appreciate your feedback and will improve.',
+                    'poor': '😞 We\'re sorry to hear that. Please share details below.'
+                };
+                ratingDisplay.innerHTML = `<div class="info-box">${ratings[rating.value]}</div>`;
+                console.log(`Rating selected: ${rating.value} (onchange triggered)`);
+            }
+        }
+        
+        // Count characters in feedback
+        function countCharacters() {
+            const feedback = document.getElementById('feedbackText').value;
+            document.getElementById('charCount').textContent = feedback.length;
+            console.log(`Characters typed: ${feedback.length} (onkeyup triggered)`);
+        }
+        
+        // Handle key down events
+        function handleKeyDown(event) {
+            if (event.key === 'Enter' && event.ctrlKey) {
+                submitFeedback();
+            }
+            console.log(`Key pressed: ${event.key} (onkeydown triggered)`);
+        }
+        
+        // Submit feedback with onclick
+        function submitFeedback() {
+            const phone = document.getElementById('phoneNumber').value;
+            const eventType = document.getElementById('eventType').value;
+            const rating = document.querySelector('input[name="rating"]:checked');
+            const feedback = document.getElementById('feedbackText').value;
+            const submitMessage = document.getElementById('submitMessage');
+            
+            // Validate
+            if (!phone || !eventType || !rating || feedback.length < 10) {
+                submitMessage.textContent = '❌ Please fill all required fields. Feedback must be at least 10 characters.';
+                submitMessage.classList.remove('success');
+                submitMessage.classList.add('error');
+                console.log('Submission failed - validation error (onclick triggered)');
+                return;
+            }
+            
+            submitMessage.textContent = '✅ Thank you! Your feedback has been submitted successfully.';
+            submitMessage.classList.remove('error');
+            submitMessage.classList.add('success');
+            console.log('Feedback submitted successfully:', {phone, eventType, rating: rating.value, feedback});
+            
+            // Clear form
+            setTimeout(() => {
+                document.getElementById('phoneNumber').value = '';
+                document.getElementById('eventType').value = '';
+                document.querySelector('input[name="rating"]').checked = false;
+                document.getElementById('feedbackText').value = '';
+                document.getElementById('charCount').textContent = '0';
+                document.getElementById('ratingDisplay').innerHTML = '';
+                document.getElementById('feeDisplay').innerHTML = '';
+                submitMessage.textContent = '';
+                submitMessage.classList.remove('success');
+            }, 3000);
+        }
+        
+        // Enlarge image on double-click
+        function enlargeImage(element) {
+            element.classList.add('enlarged');
+            document.getElementById('overlay').classList.add('show');
+            console.log('Image enlarged (ondblclick triggered)');
+        }
+        
+        // Shrink image
+        function shrinkImage() {
+            const enlarged = document.querySelector('.gallery-item.enlarged');
+            if (enlarged) {
+                enlarged.classList.remove('enlarged');
+            }
+            document.getElementById('overlay').classList.remove('show');
+            console.log('Image shrunk');
+        }
+    </script>
+</body>
+</html>

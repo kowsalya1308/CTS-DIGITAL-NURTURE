@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7 - Video Invite with Media Events</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #2c3e50;
+        }
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container {
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+        
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background-color: #000;
+        }
+        
+        .video-info {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .status-ready {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-loading {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+            background-color: #f0f8ff;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .warning-banner {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .warning-banner.show {
+            display: block;
+        }
+        
+        .event-details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .event-details h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .event-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .event-details li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .event-details li:last-child {
+            border-bottom: none;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Exercise 7: Video Invite with Media Events</h1>
+        <p>Work with video elements and media/page events</p>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <a href="index.html">Back to Home</a>
+        <a href="feedback.html">Previous Exercise</a>
+        <a href="preferences.html">Next Exercise</a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main>
+        <section>
+            <h2>🎬 Event Promo Video</h2>
+            <p>Watch our promotional video for upcoming community events. This page demonstrates media event handling.</p>
+        </section>
+
+        <!-- Video Container -->
+        <div class="video-container">
+            <video 
+                id="promoVideo" 
+                width="100%" 
+                height="auto" 
+                controls 
+                preload="metadata"
+                oncanplay="handleVideoReady()"
+                onplay="handleVideoPlay()"
+                onpause="handleVideoPause()"
+                onended="handleVideoEnded()">
+                <!-- Using a data URL for a simple test video -->
+                <source src="data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc2gtaXZ2YwAAAAAhZnJlZQAACFZtZGF0AAACrQYF//+q3EXpvebZSLeWLNgg2tNATAAAAwABAAMAYH//wA==" type="video/mp4">
+                <p>Your browser does not support the video tag. Please use a modern browser to view this content.</p>
+            </video>
+        </div>
+
+        <!-- Video Status Information -->
+        <div class="video-info">
+            <h3>📊 Video Status</h3>
+            <div id="videoStatus">
+                <span class="status-indicator status-loading">⏳ Video Status: Loading...</span>
+                <span class="status-indicator" id="videoPlayStatus">⏸️ Paused</span>
+            </div>
+            <p style="margin-top: 15px; font-size: 14px; color: #666;">
+                Open the <strong>Browser Console</strong> (F12) to see detailed media event logs.
+            </p>
+        </div>
+
+        <!-- Event Description Section -->
+        <section>
+            <h2>📅 Featured Event: Summer Festival 2026</h2>
+            <div class="event-details">
+                <h3>Summer Festival Highlights</h3>
+                <ul>
+                    <li><strong>Date:</strong> June 15, 2026</li>
+                    <li><strong>Time:</strong> 10:00 AM - 6:00 PM</li>
+                    <li><strong>Location:</strong> Central Park, Downtown Area</li>
+                    <li><strong>Activities:</strong> Live Music, Food Vendors, Art Displays, Kids Zone</li>
+                    <li><strong>Registration Fee:</strong> $15 (Free for children under 12)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Registration Interest Form -->
+        <div class="form-container">
+            <h2>🎯 Express Interest in Event</h2>
+            <form id="eventInterestForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="visitorName">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="visitorName" 
+                        name="visitorName" 
+                        placeholder="Enter your full name" 
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="visitorEmail">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="visitorEmail" 
+                        name="visitorEmail" 
+                        placeholder="your.email@example.com" 
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="visitorMessage">Tell us why you're interested in this event *</label>
+                    <textarea 
+                        id="visitorMessage" 
+                        name="visitorMessage" 
+                        placeholder="Share your thoughts..."
+                        required></textarea>
+                </div>
+
+                <button type="submit">Register Interest</button>
+            </form>
+        </div>
+
+        <!-- Warning Banner -->
+        <div id="warningBanner" class="warning-banner">
+            <strong>⚠️ Important:</strong> You have unsaved changes in the form. If you leave this page, your information will be lost. 
+            <button style="background-color: transparent; border: none; color: #856404; cursor: pointer; text-decoration: underline; padding: 0;" onclick="clearWarning()">Dismiss</button>
+        </div>
+
+        <!-- Features Section -->
+        <section>
+            <h2>Media Event Handlers Demonstrated</h2>
+            <ul>
+                <li><strong>oncanplay:</strong> Triggered when video is ready to play - shows "Video ready!" message</li>
+                <li><strong>onplay:</strong> Triggered when video starts playing</li>
+                <li><strong>onpause:</strong> Triggered when video is paused</li>
+                <li><strong>onended:</strong> Triggered when video finishes playing</li>
+                <li><strong>onbeforeunload:</strong> Warns users if they try to leave with unsaved form data</li>
+                <li><strong>preload="metadata":</strong> Loads video metadata for faster display</li>
+                <li><strong>controls:</strong> Provides native video playback controls</li>
+            </ul>
+        </section>
+
+        <!-- Event Log Section -->
+        <section>
+            <h2>📝 Event Log (Check Console for Details)</h2>
+            <p>All video events are logged to the browser console. Press <strong>F12</strong> to open Developer Tools and view the console.</p>
+            <div class="video-info">
+                <p><strong>Tip:</strong> Play, pause, and let the video finish to see different events being triggered.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Local Community Event Portal. Exercise 7 - Video Invite & Media Events</p>
+        <p><a href="index.html" style="color: #3498db;">Return to Main Portal</a></p>
+    </footer>
+
+    <!-- JavaScript Event Handlers -->
+    <script>
+        let formHasChanges = false;
+
+        // Media Event Handlers
+        function handleVideoReady() {
+            console.log('✅ Video ready to play (oncanplay event)');
+            document.getElementById('videoStatus').innerHTML = 
+                '<span class="status-indicator status-ready">✅ Video Status: Ready to Play</span>' +
+                '<span class="status-indicator" id="videoPlayStatus">⏸️ Paused</span>';
+        }
+
+        function handleVideoPlay() {
+            console.log('▶️ Video is now playing (onplay event)');
+            document.getElementById('videoPlayStatus').textContent = '▶️ Playing';
+        }
+
+        function handleVideoPause() {
+            console.log('⏸️ Video is now paused (onpause event)');
+            document.getElementById('videoPlayStatus').textContent = '⏸️ Paused';
+        }
+
+        function handleVideoEnded() {
+            console.log('✅ Video has finished playing (onended event)');
+            document.getElementById('videoPlayStatus').innerHTML = '✅ Video Finished';
+        }
+
+        // Form change detection
+        document.getElementById('eventInterestForm').addEventListener('change', function() {
+            formHasChanges = true;
+            document.getElementById('warningBanner').classList.add('show');
+            console.log('Form has been modified');
+        });
+
+        // Warn before unload if form has unsaved changes
+        window.onbeforeunload = function(event) {
+            if (formHasChanges) {
+                event.preventDefault();
+                event.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+                console.log('⚠️ onbeforeunload event triggered - user has unsaved changes');
+                return event.returnValue;
+            }
+        };
+
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('visitorName').value;
+            const email = document.getElementById('visitorEmail').value;
+            const message = document.getElementById('visitorMessage').value;
+            
+            console.log('Form submitted successfully:', {name, email, message});
+            
+            // Show success message
+            alert('Thank you for your interest! We will contact you soon at ' + email);
+            
+            // Reset form
+            document.getElementById('eventInterestForm').reset();
+            formHasChanges = false;
+            document.getElementById('warningBanner').classList.remove('show');
+        }
+
+        // Clear warning banner
+        function clearWarning() {
+            document.getElementById('warningBanner').classList.remove('show');
+        }
+
+        // Log initial message
+        console.log('%c🎬 Exercise 7: Video Events Demo Started', 'color: #3498db; font-size: 14px; font-weight: bold;');
+    </script>
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 8 - Saving User Preferences with Storage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #2c3e50;
+        }
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preferences-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        select,
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .checkbox-item label,
+        .radio-item label {
+            display: inline;
+            margin-bottom: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .danger-button {
+            background-color: #e74c3c;
+        }
+        
+        .danger-button:hover {
+            background-color: #c0392b;
+        }
+        
+        .info-box {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .status-saved {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-empty {
+            background-color: #cfe2ff;
+            color: #084298;
+            border: 1px solid #b6d4fe;
+        }
+        
+        .preference-display {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+        }
+        
+        .preference-display strong {
+            color: #2c3e50;
+        }
+        
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin: 15px 0;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Exercise 8: Saving User Preferences</h1>
+        <p>Work with localStorage, sessionStorage, and data persistence</p>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <a href="index.html">Back to Home</a>
+        <a href="video.html">Previous Exercise</a>
+        <a href="geolocation.html">Next Exercise</a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main>
+        <section>
+            <h2>💾 Manage Your Preferences</h2>
+            <p>This page demonstrates how to save and retrieve user preferences using browser storage:</p>
+            <ul>
+                <li><strong>localStorage:</strong> Persists data even after browser closes (long-term storage)</li>
+                <li><strong>sessionStorage:</strong> Data is cleared when browser tab closes (session-only)</li>
+                <li><strong>JSON serialization:</strong> Convert objects to strings for storage</li>
+            </ul>
+        </section>
+
+        <!-- Preferences Form -->
+        <div class="preferences-container">
+            <h2>⚙️ Your Preferences</h2>
+            <form id="preferencesForm" onsubmit="savePreferences(event)">
+                
+                <!-- Favorite Event Type -->
+                <div class="form-group">
+                    <label for="favoriteEventType">🎉 Favorite Event Type *</label>
+                    <select id="favoriteEventType" name="favoriteEventType" required>
+                        <option value="">-- Select Your Favorite --</option>
+                        <option value="festival">Summer Festival</option>
+                        <option value="farmers-market">Farmers Market</option>
+                        <option value="cleanup">Community Cleanup</option>
+                        <option value="sports">Youth Sports Day</option>
+                        <option value="art">Art Exhibition</option>
+                        <option value="workshop">Community Workshop</option>
+                    </select>
+                </div>
+
+                <!-- Email Notifications -->
+                <div class="form-group">
+                    <label>📧 Email Notifications</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="emailYes" name="emailNotifications" value="yes" checked>
+                            <label for="emailYes">Yes, send me notifications</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="emailNo" name="emailNotifications" value="no">
+                            <label for="emailNo">No, do not send notifications</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Categories Interest -->
+                <div class="form-group">
+                    <label>📌 Event Categories of Interest</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cultural" name="categories" value="cultural">
+                            <label for="cultural">Cultural Events</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="sports" name="categories" value="sports">
+                            <label for="sports">Sports Events</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="educational" name="categories" value="educational">
+                            <label for="educational">Educational Workshops</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="family" name="categories" value="family">
+                            <label for="family">Family Activities</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme Preference -->
+                <div class="form-group">
+                    <label>🎨 Theme Preference</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="themeLight" name="theme" value="light" checked>
+                            <label for="themeLight">Light Mode</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="themeDark" name="theme" value="dark">
+                            <label for="themeDark">Dark Mode</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div>
+                    <button type="submit">💾 Save Preferences to localStorage</button>
+                    <button type="button" onclick="saveSessionPreferences()">⏱️ Save to sessionStorage</button>
+                    <button type="button" class="danger-button" onclick="clearAllPreferences()">🗑️ Clear All Storage</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Saved Preferences Display -->
+        <section>
+            <h2>📋 Your Saved Preferences</h2>
+            
+            <div class="info-box">
+                <h3>localStorage Status</h3>
+                <div id="localStorageStatus">
+                    <span class="status-indicator status-empty">❌ No preferences saved yet</span>
+                </div>
+                <div id="localStorageDisplay"></div>
+            </div>
+
+            <div class="info-box">
+                <h3>sessionStorage Status</h3>
+                <div id="sessionStorageStatus">
+                    <span class="status-indicator status-empty">❌ No session preferences saved yet</span>
+                </div>
+                <div id="sessionStorageDisplay"></div>
+            </div>
+        </section>
+
+        <!-- Storage Information Section -->
+        <section>
+            <h2>📚 Understanding Storage Types</h2>
+            
+            <h3>localStorage</h3>
+            <p><strong>Persistence:</strong> Data remains even after closing the browser and reopening later</p>
+            <p><strong>Scope:</strong> Shared across all tabs and windows of the same origin</p>
+            <p><strong>Capacity:</strong> Typically 5-10MB per origin</p>
+            <p><strong>Use Case:</strong> Saving user preferences, theme settings, saved form data</p>
+            <div class="code-block">
+// Example usage:<br>
+localStorage.setItem('favoriteEvent', 'festival');<br>
+const event = localStorage.getItem('favoriteEvent');<br>
+localStorage.removeItem('favoriteEvent');<br>
+localStorage.clear(); // Clear all data
+            </div>
+
+            <h3 style="margin-top: 20px;">sessionStorage</h3>
+            <p><strong>Persistence:</strong> Data is cleared when the tab/window is closed</p>
+            <p><strong>Scope:</strong> Isolated to each tab or window</p>
+            <p><strong>Capacity:</strong> Typically 5-10MB per origin</p>
+            <p><strong>Use Case:</strong> Temporary session data, form progress, temporary settings</p>
+            <div class="code-block">
+// Example usage:<br>
+sessionStorage.setItem('formProgress', JSON.stringify(data));<br>
+const data = JSON.parse(sessionStorage.getItem('formProgress'));<br>
+sessionStorage.removeItem('formProgress');
+            </div>
+
+            <h3 style="margin-top: 20px;">Differences</h3>
+            <table style="width: 100%; margin-top: 15px; border-collapse: collapse;">
+                <tr style="background-color: #2c3e50; color: white;">
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Feature</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">localStorage</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">sessionStorage</th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Expiration</strong></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Never (unless cleared)</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">When tab closes</td>
+                </tr>
+                <tr style="background-color: #f9f9f9;">
+                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Shared Across Tabs</strong></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Yes</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">No</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Access</strong></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Persistent</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Current session only</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Tips Section -->
+        <section>
+            <h2>💡 Best Practices</h2>
+            <ul>
+                <li><strong>Use JSON.stringify():</strong> Convert objects to strings before storing</li>
+                <li><strong>Use JSON.parse():</strong> Convert strings back to objects when retrieving</li>
+                <li><strong>Check for errors:</strong> Storage might be full or disabled in incognito mode</li>
+                <li><strong>Validate data:</strong> Always validate retrieved data before using</li>
+                <li><strong>Respect user choice:</strong> Don't store sensitive data like passwords</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Local Community Event Portal. Exercise 8 - User Preferences & Storage</p>
+        <p><a href="index.html" style="color: #3498db;">Return to Main Portal</a></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize preferences on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('%c🔍 Exercise 8: Storage Demo Started', 'color: #3498db; font-size: 14px; font-weight: bold;');
+            loadPreferences();
+            displayStorageStatus();
+        });
+
+        // Save preferences to localStorage
+        function savePreferences(event) {
+            event.preventDefault();
+            
+            const preferences = {
+                favoriteEventType: document.getElementById('favoriteEventType').value,
+                emailNotifications: document.querySelector('input[name="emailNotifications"]:checked').value,
+                categories: Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(cb => cb.value),
+                theme: document.querySelector('input[name="theme"]:checked').value,
+                savedAt: new Date().toLocaleString()
+            };
+
+            try {
+                localStorage.setItem('communityEventPreferences', JSON.stringify(preferences));
+                console.log('✅ Preferences saved to localStorage:', preferences);
+                alert('✅ Your preferences have been saved!');
+                displayStorageStatus();
+            } catch (error) {
+                console.error('❌ Error saving to localStorage:', error);
+                alert('❌ Error saving preferences. Storage might be full.');
+            }
+        }
+
+        // Save preferences to sessionStorage
+        function saveSessionPreferences() {
+            const preferences = {
+                favoriteEventType: document.getElementById('favoriteEventType').value,
+                emailNotifications: document.querySelector('input[name="emailNotifications"]:checked').value,
+                categories: Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(cb => cb.value),
+                theme: document.querySelector('input[name="theme"]:checked').value,
+                savedAt: new Date().toLocaleString()
+            };
+
+            try {
+                sessionStorage.setItem('communityEventSessionPrefs', JSON.stringify(preferences));
+                console.log('✅ Preferences saved to sessionStorage:', preferences);
+                alert('⏱️ Session preferences saved! They will be cleared when you close this tab.');
+                displayStorageStatus();
+            } catch (error) {
+                console.error('❌ Error saving to sessionStorage:', error);
+                alert('❌ Error saving session preferences.');
+            }
+        }
+
+        // Load preferences from localStorage
+        function loadPreferences() {
+            try {
+                const preferences = JSON.parse(localStorage.getItem('communityEventPreferences'));
+                if (preferences) {
+                    document.getElementById('favoriteEventType').value = preferences.favoriteEventType;
+                    document.querySelector(`input[value="${preferences.emailNotifications}"]`).checked = true;
+                    
+                    preferences.categories.forEach(category => {
+                        document.getElementById(category).checked = true;
+                    });
+                    
+                    document.querySelector(`input[value="${preferences.theme}"]`).checked = true;
+                    
+                    console.log('✅ Preferences loaded from localStorage:', preferences);
+                }
+            } catch (error) {
+                console.log('ℹ️ No saved preferences found or error loading them');
+            }
+        }
+
+        // Display storage status
+        function displayStorageStatus() {
+            // localStorage status
+            const localData = localStorage.getItem('communityEventPreferences');
+            const localStorageStatus = document.getElementById('localStorageStatus');
+            const localStorageDisplay = document.getElementById('localStorageDisplay');
+            
+            if (localData) {
+                const preferences = JSON.parse(localData);
+                localStorageStatus.innerHTML = '<span class="status-indicator status-saved">✅ Preferences Saved</span>';
+                localStorageDisplay.innerHTML = `
+                    <div class="preference-display">
+                        <p><strong>Favorite Event:</strong> ${preferences.favoriteEventType}</p>
+                        <p><strong>Email Notifications:</strong> ${preferences.emailNotifications === 'yes' ? '✓ Enabled' : '✗ Disabled'}</p>
+                        <p><strong>Categories:</strong> ${preferences.categories.join(', ') || 'None selected'}</p>
+                        <p><strong>Theme:</strong> ${preferences.theme}</p>
+                        <p><strong>Saved:</strong> ${preferences.savedAt}</p>
+                    </div>
+                `;
+            } else {
+                localStorageStatus.innerHTML = '<span class="status-indicator status-empty">❌ No preferences saved yet</span>';
+                localStorageDisplay.innerHTML = '';
+            }
+
+            // sessionStorage status
+            const sessionData = sessionStorage.getItem('communityEventSessionPrefs');
+            const sessionStorageStatus = document.getElementById('sessionStorageStatus');
+            const sessionStorageDisplay = document.getElementById('sessionStorageDisplay');
+            
+            if (sessionData) {
+                const preferences = JSON.parse(sessionData);
+                sessionStorageStatus.innerHTML = '<span class="status-indicator status-saved">✅ Session Data Saved</span>';
+                sessionStorageDisplay.innerHTML = `
+                    <div class="preference-display">
+                        <p><strong>Favorite Event:</strong> ${preferences.favoriteEventType}</p>
+                        <p><strong>Email Notifications:</strong> ${preferences.emailNotifications === 'yes' ? '✓ Enabled' : '✗ Disabled'}</p>
+                        <p><strong>Categories:</strong> ${preferences.categories.join(', ') || 'None selected'}</p>
+                        <p><strong>Theme:</strong> ${preferences.theme}</p>
+                        <p><strong>Saved:</strong> ${preferences.savedAt}</p>
+                    </div>
+                `;
+            } else {
+                sessionStorageStatus.innerHTML = '<span class="status-indicator status-empty">❌ No session data saved yet</span>';
+                sessionStorageDisplay.innerHTML = '';
+            }
+        }
+
+        // Clear all preferences
+        function clearAllPreferences() {
+            if (confirm('⚠️ Are you sure? This will delete all saved preferences and session data.')) {
+                localStorage.removeItem('communityEventPreferences');
+                sessionStorage.removeItem('communityEventSessionPrefs');
+                console.log('🗑️ All storage cleared');
+                alert('✅ All storage has been cleared!');
+                displayStorageStatus();
+            }
+        }
+    </script>
+</body>
+</html>

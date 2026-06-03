@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 9 - Geolocation for Event Mapping</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #2c3e50;
+        }
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .info-box {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .status-loading {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        #locationResult {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border: 2px solid #3498db;
+            display: none;
+        }
+        
+        #locationResult.show {
+            display: block;
+        }
+        
+        .coordinate-display {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .coordinate-display strong {
+            display: block;
+            margin-top: 8px;
+            color: #2c3e50;
+        }
+        
+        .event-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .event-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        
+        .event-item h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .distance {
+            background-color: #d4edda;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            color: #155724;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px dashed #bbb;
+        }
+        
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin: 15px 0;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Exercise 9: Geolocation for Event Mapping</h1>
+        <p>Practice geolocation API with error handling</p>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <a href="index.html">Back to Home</a>
+        <a href="preferences.html">Previous Exercise</a>
+        <a href="debugging.html">Next Exercise</a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main>
+        <section>
+            <h2>📍 Find Nearby Community Events</h2>
+            <div class="info-box">
+                <p><strong>Note:</strong> This feature uses your browser's Geolocation API to find your location and suggest nearby events.</p>
+                <p>You'll need to <strong>allow location permission</strong> when prompted. Your actual coordinates will be displayed for demonstration.</p>
+            </div>
+        </section>
+
+        <!-- Geolocation Controls -->
+        <section>
+            <h2>🔍 Get Your Location</h2>
+            <p>Click the button below to find your current location:</p>
+            <div style="margin: 20px 0;">
+                <button id="getLocationBtn" onclick="findNearbyEvents()">📍 Find Nearby Events</button>
+                <button onclick="findNearbyEventsHighAccuracy()" style="background-color: #27ae60;">🎯 Find Events (High Accuracy)</button>
+                <button onclick="clearLocation()" style="background-color: #95a5a6;">🗑️ Clear Results</button>
+            </div>
+            <div id="locationStatus"></div>
+        </section>
+
+        <!-- Location Results -->
+        <div id="locationResult">
+            <h2>📌 Your Location & Nearby Events</h2>
+            
+            <!-- Coordinates Display -->
+            <div class="coordinate-display">
+                <strong>Latitude:</strong> <span id="latitude">--</span><br>
+                <strong>Longitude:</strong> <span id="longitude">--</span><br>
+                <strong>Accuracy:</strong> <span id="accuracy">--</span> meters<br>
+                <strong>Altitude:</strong> <span id="altitude">--</span> meters<br>
+                <strong>Timestamp:</strong> <span id="timestamp">--</span>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="map-placeholder">
+                🗺️ Map would be displayed here (Requires Google Maps API or similar)
+            </div>
+
+            <!-- Nearby Events List -->
+            <h3>📍 Events Near You</h3>
+            <ul class="event-list" id="nearbyEventsList">
+                <li>Loading events...</li>
+            </ul>
+        </div>
+
+        <!-- Mock Events Database -->
+        <section style="display: none;" id="mockEventsDB">
+            <p id="mockEventsData">
+                [
+                    {"name": "Summer Festival", "lat": 40.7128, "lng": -74.0060, "address": "Central Park", "fee": "$15"},
+                    {"name": "Farmers Market", "lat": 40.7150, "lng": -74.0080, "address": "Downtown Square", "fee": "Free"},
+                    {"name": "Community Cleanup", "lat": 40.7200, "lng": -74.0050, "address": "Riverside Park", "fee": "Free"},
+                    {"name": "Youth Sports Day", "lat": 40.7100, "lng": -74.0100, "address": "Sports Complex", "fee": "$20"},
+                    {"name": "Art Exhibition", "lat": 40.7180, "lng": -74.0070, "address": "Art Gallery District", "fee": "$10"},
+                    {"name": "Community Workshop", "lat": 40.7120, "lng": -74.0090, "address": "Community Center", "fee": "$25"}
+                ]
+            </p>
+        </section>
+
+        <!-- Information Section -->
+        <section>
+            <h2>🛰️ Geolocation API Features</h2>
+            <p>This exercise demonstrates the Geolocation API with the following features:</p>
+            <ul>
+                <li><strong>getCurrentPosition():</strong> Gets the user's current location</li>
+                <li><strong>enableHighAccuracy:</strong> Option for more precise location (uses GPS)</li>
+                <li><strong>timeout:</strong> Maximum time to wait for location (in milliseconds)</li>
+                <li><strong>maximumAge:</strong> How long to cache the position (in milliseconds)</li>
+                <li><strong>Error Handling:</strong> Handles permission denial, timeout, and position unavailable</li>
+                <li><strong>Distance Calculation:</strong> Uses Haversine formula to calculate distance between points</li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">Code Example</h3>
+            <div class="code-block">
+const options = {<br>
+&nbsp;&nbsp;enableHighAccuracy: true,<br>
+&nbsp;&nbsp;timeout: 10000,<br>
+&nbsp;&nbsp;maximumAge: 0<br>
+};<br>
+<br>
+navigator.geolocation.getCurrentPosition(<br>
+&nbsp;&nbsp;successCallback,<br>
+&nbsp;&nbsp;errorCallback,<br>
+&nbsp;&nbsp;options<br>
+);
+            </div>
+
+            <h3 style="margin-top: 20px;">Error Codes</h3>
+            <ul>
+                <li><strong>PERMISSION_DENIED (1):</strong> User denied location permission</li>
+                <li><strong>POSITION_UNAVAILABLE (2):</strong> Location information unavailable</li>
+                <li><strong>TIMEOUT (3):</strong> Timeout waiting for position</li>
+            </ul>
+        </section>
+
+        <!-- Privacy Notice Section -->
+        <section style="background-color: #e8f4f8;">
+            <h2>🔒 Privacy & Security</h2>
+            <ul>
+                <li>The Geolocation API requires <strong>HTTPS</strong> on production sites (HTTP allowed for localhost)</li>
+                <li>Users must <strong>explicitly grant permission</strong> for each website</li>
+                <li>Browsers typically show a permission prompt with options to allow, block, or remember choice</li>
+                <li>Location data is handled on the <strong>client-side</strong> in this exercise (not sent to server)</li>
+                <li>Always include clear explanations of why you need location data</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Local Community Event Portal. Exercise 9 - Geolocation</p>
+        <p><a href="index.html" style="color: #3498db;">Return to Main Portal</a></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mock events data
+        const mockEvents = [
+            {name: "Summer Festival", lat: 40.7128, lng: -74.0060, address: "Central Park", fee: "$15"},
+            {name: "Farmers Market", lat: 40.7150, lng: -74.0080, address: "Downtown Square", fee: "Free"},
+            {name: "Community Cleanup", lat: 40.7200, lng: -74.0050, address: "Riverside Park", fee: "Free"},
+            {name: "Youth Sports Day", lat: 40.7100, lng: -74.0100, address: "Sports Complex", fee: "$20"},
+            {name: "Art Exhibition", lat: 40.7180, lng: -74.0070, address: "Art Gallery District", fee: "$10"},
+            {name: "Community Workshop", lat: 40.7120, lng: -74.0090, address: "Community Center", fee: "$25"}
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('%c🧭 Exercise 9: Geolocation Demo Started', 'color: #3498db; font-size: 14px; font-weight: bold;');
+            checkGeolocationSupport();
+        });
+
+        // Check if geolocation is supported
+        function checkGeolocationSupport() {
+            if ('geolocation' in navigator) {
+                console.log('✅ Geolocation API is supported by this browser');
+            } else {
+                document.getElementById('locationStatus').innerHTML = 
+                    '<div class="status-indicator status-error">❌ Geolocation not supported in this browser</div>';
+                console.error('❌ Geolocation API is not supported');
+            }
+        }
+
+        // Find nearby events with default accuracy
+        function findNearbyEvents() {
+            findLocation(false);
+        }
+
+        // Find nearby events with high accuracy
+        function findNearbyEventsHighAccuracy() {
+            findLocation(true);
+        }
+
+        // Get location from geolocation API
+        function findLocation(highAccuracy) {
+            const locationStatus = document.getElementById('locationStatus');
+            const btn = document.getElementById('getLocationBtn');
+            
+            if (!('geolocation' in navigator)) {
+                locationStatus.innerHTML = 
+                    '<div class="status-indicator status-error">❌ Geolocation not supported</div>';
+                return;
+            }
+
+            // Show loading status
+            locationStatus.innerHTML = 
+                '<div class="status-indicator status-loading">⏳ Locating you...</div>';
+            btn.disabled = true;
+
+            const options = {
+                enableHighAccuracy: highAccuracy,
+                timeout: 10000,
+                maximumAge: 0
+            };
+
+            navigator.geolocation.getCurrentPosition(
+                successCallback,
+                errorCallback,
+                options
+            );
+        }
+
+        // Success callback
+        function successCallback(position) {
+            const locationStatus = document.getElementById('locationStatus');
+            const btn = document.getElementById('getLocationBtn');
+            btn.disabled = false;
+
+            const coords = position.coords;
+            const timestamp = new Date(position.timestamp);
+
+            console.log('✅ Location found:', {
+                latitude: coords.latitude,
+                longitude: coords.longitude,
+                accuracy: coords.accuracy,
+                altitude: coords.altitude,
+                altitudeAccuracy: coords.altitudeAccuracy,
+                heading: coords.heading,
+                speed: coords.speed,
+                timestamp: timestamp
+            });
+
+            // Update UI with coordinates
+            document.getElementById('latitude').textContent = coords.latitude.toFixed(6);
+            document.getElementById('longitude').textContent = coords.longitude.toFixed(6);
+            document.getElementById('accuracy').textContent = Math.round(coords.accuracy);
+            document.getElementById('altitude').textContent = coords.altitude ? coords.altitude.toFixed(2) : 'N/A';
+            document.getElementById('timestamp').textContent = timestamp.toLocaleString();
+
+            // Show location result
+            document.getElementById('locationResult').classList.add('show');
+
+            // Calculate distances and find nearby events
+            const userLat = coords.latitude;
+            const userLng = coords.longitude;
+
+            const nearbyEvents = mockEvents
+                .map(event => ({
+                    ...event,
+                    distance: calculateDistance(userLat, userLng, event.lat, event.lng)
+                }))
+                .sort((a, b) => a.distance - b.distance)
+                .slice(0, 5); // Get 5 closest events
+
+            // Display nearby events
+            displayNearbyEvents(nearbyEvents);
+
+            // Show success status
+            locationStatus.innerHTML = 
+                '<div class="status-indicator status-success">✅ Location found! ' + 
+                Math.round(coords.accuracy) + 'm accuracy</div>';
+        }
+
+        // Error callback
+        function errorCallback(error) {
+            const locationStatus = document.getElementById('locationStatus');
+            const btn = document.getElementById('getLocationBtn');
+            btn.disabled = false;
+
+            let errorMessage = '';
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    errorMessage = '❌ Permission Denied: You did not allow access to your location';
+                    console.error('Permission denied by user');
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    errorMessage = '❌ Position Unavailable: Location information is currently unavailable';
+                    console.error('Position unavailable');
+                    break;
+                case error.TIMEOUT:
+                    errorMessage = '❌ Timeout: The request to get user location timed out';
+                    console.error('Request timed out');
+                    break;
+                default:
+                    errorMessage = '❌ Error: ' + error.message;
+                    console.error('Unknown error:', error);
+            }
+
+            locationStatus.innerHTML = 
+                '<div class="status-indicator status-error">' + errorMessage + '</div>';
+        }
+
+        // Calculate distance between two coordinates using Haversine formula
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 3959; // Earth's radius in miles
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        // Display nearby events
+        function displayNearbyEvents(events) {
+            const eventsList = document.getElementById('nearbyEventsList');
+            eventsList.innerHTML = '';
+
+            events.forEach((event, index) => {
+                const eventHTML = `
+                    <li class="event-item">
+                        <h4>${index + 1}. ${event.name}</h4>
+                        <p><strong>Location:</strong> ${event.address}</p>
+                        <p><strong>Fee:</strong> ${event.fee}</p>
+                        <span class="distance">📍 ${event.distance.toFixed(2)} miles away</span>
+                    </li>
+                `;
+                eventsList.innerHTML += eventHTML;
+            });
+
+            console.log('📍 Found ' + events.length + ' nearby events');
+        }
+
+        // Clear location results
+        function clearLocation() {
+            document.getElementById('locationResult').classList.remove('show');
+            document.getElementById('locationStatus').innerHTML = '';
+            console.log('🗑️ Location results cleared');
+        }
+    </script>
+</body>
+</html>

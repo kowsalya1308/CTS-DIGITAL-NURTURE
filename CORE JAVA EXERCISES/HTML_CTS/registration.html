@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5 - Event Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #2c3e50;
+        }
+        main {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        /* Form styling */
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        
+        input[type="email"] {
+            background-color: #f9f9f9;
+        }
+        
+        select {
+            cursor: pointer;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button:active {
+            background-color: #1f618d;
+        }
+        
+        /* Output element styling */
+        #confirmationMessage {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            color: #155724;
+            display: none;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        #confirmationMessage.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .required-note {
+            font-size: 12px;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+        
+        section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Exercise 5: Event Registration Form</h1>
+        <p>Practice input types, validation, and form submission</p>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <a href="index.html">Back to Home</a>
+        <a href="gallery.html">Previous Exercise</a>
+        <a href="feedback.html">Next Exercise</a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main>
+        <section>
+            <h2>📋 Register for an Event</h2>
+            <p>Fill out the form below to register for one of our community events. All marked fields are required.</p>
+        </section>
+
+        <!-- Registration Form -->
+        <div class="form-container">
+            <form id="registrationForm" onsubmit="handleFormSubmit(event)">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="fullName" 
+                        name="fullName" 
+                        placeholder="Enter your full name" 
+                        required 
+                        autofocus>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="your.email@example.com" 
+                        required>
+                </div>
+
+                <!-- Phone Field -->
+                <div class="form-group">
+                    <label for="phone">Phone Number (optional)</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="(555) 123-4567">
+                </div>
+
+                <!-- Event Date Field -->
+                <div class="form-group">
+                    <label for="eventDate">Preferred Event Date *</label>
+                    <input 
+                        type="date" 
+                        id="eventDate" 
+                        name="eventDate" 
+                        required>
+                </div>
+
+                <!-- Event Type Dropdown -->
+                <div class="form-group">
+                    <label for="eventType">Event Type *</label>
+                    <select id="eventType" name="eventType" required>
+                        <option value="">-- Select an Event --</option>
+                        <option value="festival">Summer Festival</option>
+                        <option value="farmers-market">Farmers Market</option>
+                        <option value="cleanup">Community Cleanup</option>
+                        <option value="sports">Youth Sports Day</option>
+                        <option value="art">Art Exhibition</option>
+                        <option value="workshop">Community Workshop</option>
+                    </select>
+                </div>
+
+                <!-- Message/Comments Field -->
+                <div class="form-group">
+                    <label for="message">Additional Comments (optional)</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        placeholder="Share any special requirements or questions..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit">Register for Event</button>
+                
+                <p class="required-note">* Required fields</p>
+            </form>
+
+            <!-- Confirmation Output -->
+            <output id="confirmationMessage">
+                ✅ Registration Successful! Thank you, <span id="registrantName"></span>. You will receive a confirmation email at <span id="registrantEmail"></span>.
+            </output>
+        </div>
+
+        <!-- Information Section -->
+        <section style="margin-top: 30px;">
+            <h2>Form Features Demonstrated</h2>
+            <ul>
+                <li><strong>autofocus:</strong> Full Name field automatically receives focus on page load</li>
+                <li><strong>required:</strong> Prevents submission if required fields are empty</li>
+                <li><strong>placeholder:</strong> Helpful hints inside input fields</li>
+                <li><strong>input type="email":</strong> Built-in email validation</li>
+                <li><strong>input type="date":</strong> Date picker for easy date selection</li>
+                <li><strong>input type="tel":</strong> Semantic field for phone numbers</li>
+                <li><strong>&lt;select&gt;:</strong> Dropdown menu for event selection</li>
+                <li><strong>&lt;textarea&gt;:</strong> Multi-line text input</li>
+                <li><strong>&lt;output&gt;:</strong> Dynamic confirmation message display</li>
+                <li><strong>Form Validation:</strong> JavaScript handles form submission</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Local Community Event Portal. Exercise 5 - Registration Form</p>
+        <p><a href="index.html" style="color: #3498db;">Return to Main Portal</a></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            
+            // Update confirmation message
+            document.getElementById('registrantName').textContent = fullName;
+            document.getElementById('registrantEmail').textContent = email;
+            
+            // Show confirmation message
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.classList.add('show');
+            
+            // Reset form
+            document.getElementById('registrationForm').reset();
+            
+            // Hide confirmation after 5 seconds
+            setTimeout(() => {
+                confirmationMessage.classList.remove('show');
+            }, 5000);
+            
+            // Log to console for debugging
+            console.log('Form Submitted:', {
+                fullName: fullName,
+                email: email,
+                phone: document.getElementById('phone').value,
+                eventDate: document.getElementById('eventDate').value,
+                eventType: document.getElementById('eventType').value,
+                message: document.getElementById('message').value
+            });
+        }
+    </script>
+</body>
+</html>
