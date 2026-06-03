@@ -1,0 +1,203 @@
+/* ==========================================
+   styles.css - Local Community Event Portal demo
+   Sections labeled for readability and maintenance
+   ========================================== */
+
+/* Optional: import Google Font via @import (alternative to <link>)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+*/
+
+/* Base / Reset */
+/* Universal selector to reset margin/padding (Task 3) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Typography */
+/* Base font settings for the portal (Task 5) */
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #1b2b3a; /* HEX color for main text */
+  line-height: 1.6;
+  font-size: 16px;
+  background-image: url('assets/city-bg.jpg'); /* background with fallback color (Task 4) */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* fallback color if image fails or is blocked */
+  background-color: rgba(243,246,251,1);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Header styles */
+/* Style for main banner and navigation (Task 3 & 4) */
+#mainHeader {
+  padding: 20px 24px;
+  background: linear-gradient(90deg, rgba(0,123,255,0.12), rgba(0,123,255,0.04)); /* subtle gradient */
+}
+
+/* Navigation - remove bullets and style links (Task 6) */
+.mainNav ul {
+  list-style-type: none; /* remove bullets */
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.mainNav a {
+  text-decoration: none;
+  color: #004085;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Link pseudo-classes (Task 6) */
+.mainNav a:link { color: #004085; }
+.mainNav a:visited { color: #6f42c1; }
+.mainNav a:hover { background-color: rgba(0,123,255,0.08); }
+.mainNav a:active { background-color: rgba(0,123,255,0.16); }
+
+/* Hero and event grid */
+/* Element selector to style all <h2> (Task 3) */
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+  color: #0b3a66; /* HEX */
+}
+
+/* Section header gradient (Task 4) */
+.sectionHeader {
+  background: linear-gradient(90deg, #0056b3 0%, #00aaff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+/* Event card styles */
+/* Styles for event containers (Task 3 & 8) */
+.eventCard {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(27,43,58,0.06);
+  padding: 16px;
+  margin: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(11,26,40,0.04);
+}
+
+/* Class selector example for event container (Task 3) */
+.eventTitle {
+  font-size: 1.125rem;
+  margin-bottom: 6px;
+  color: #0b3a66;
+}
+
+/* Grouping selector for h3 and p to style together (Task 3) */
+h3, p {
+  color: rgba(27,43,58,0.9);
+}
+
+.desc {
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+}
+
+/* CTA button example with descriptive comment (Task 2) */
+/* Style for main CTA button */
+.cta-button {
+  background-color: #007BFF; /* HEX */
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cta-button:hover { background-color: #0069d9; }
+
+/* Table styling for admin (Task 7) */
+.eventsTable {
+  width: 100%;
+  border-collapse: collapse; /* Task 7 */
+  margin: 12px 0 24px;
+}
+
+.eventsTable th,
+.eventsTable td {
+  border: 1px solid rgba(27,43,58,0.08);
+  padding: 10px 12px;
+  text-align: center; /* Task 7 */
+}
+
+/* Zebra striping (Task 7) */
+.eventsTable tbody tr:nth-child(even) {
+  background-color: rgba(0,0,0,0.02);
+}
+
+/* Form outlines and focus (Task 8) */
+.adminForm input[type="text"],
+.adminForm input[type="date"] {
+  display:block;
+  width: 100%;
+  padding: 8px 10px;
+  margin: 6px 0 12px;
+  border: 1px solid rgba(27,43,58,0.12);
+  border-radius: 4px;
+}
+
+/* Outline to highlight selected fields in form (Task 8) */
+.adminForm input:focus {
+  outline: 3px solid rgba(0,123,255,0.18);
+}
+
+/* Visibility comparison classes (Task 8) */
+.vis-hidden { visibility: hidden; }
+.vis-none { display: none; }
+
+/* Multi-column layout for news article (Task 9) */
+.newsArticle {
+  padding: 16px;
+  margin: 12px;
+  column-count: 2; /* Task 9 */
+  column-gap: 30px; /* Task 9 */
+  column-rule: 1px solid rgba(100,100,100,0.15); /* Task 9 */
+}
+
+/* Responsive layout using Flexbox as bonus (Task 10) */
+.eventsGrid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Use percentages and viewport units for flexible elements (Task 10) */
+.eventCard { width: calc(50% - 24px); }
+
+/* Media queries for screens smaller than 768px (Task 10) */
+@media (max-width: 768px) {
+  /* Stack navigation vertically */
+  .mainNav ul { flex-direction: column; align-items:flex-start; }
+
+  /* Make event cards full width */
+  .eventCard { width: 100%; }
+
+  /* Reduce font sizes for readability */
+  body { font-size: 15px; }
+  h2 { font-size: 1.5rem; }
+
+  /* Reduce background image prominence */
+  body { background-size: auto 60vh; }
+
+  /* Make news article single column on small screens */
+  .newsArticle { column-count: 1; }
+}
+
+/* Utility and small helpers */
+.small-muted { color: rgba(27,43,58,0.6); font-size:0.9rem; }
+
+/* End of stylesheet */

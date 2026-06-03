@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Local Community Event Portal - CSS Demo</title>
+  <!-- Google Font via <link> (Task 5) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Embedded <style> tag in the <head> to define body background (Task 1) -->
+  <style>
+    /* Embedded: simple background color fallback */
+    body { background-color: #f3f6fb; }
+  </style>
+
+  <!-- Link external stylesheet with reusable styles (Task 1) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="mainHeader">
+    <!-- Inline style on this heading to make it red (Task 1) -->
+    <h1 style="color: red; margin:0;">Local Community Event Portal</h1>
+    <nav class="mainNav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#news">Community News</a></li>
+        <li><a href="#admin">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Upcoming Events</h2>
+      <div class="eventsGrid">
+        <article class="eventCard">
+          <h3 class="eventTitle">Farmers Market</h3>
+          <p class="desc">Fresh produce, live music, and family activities.</p>
+        </article>
+        <article class="eventCard">
+          <h3 class="eventTitle">Park Clean-up</h3>
+          <p class="desc">Join volunteers to keep our parks green.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="news" class="newsArticle">
+      <h2 class="sectionHeader">Community Bulletin</h2>
+      <p>
+        This week's bulletin contains updates about local services, volunteer opportunities, and neighborhood news. The text below is arranged in two columns on wider screens using CSS3 multi-column layout. Resize your browser to see it collapse on small screens.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.
+      </p>
+    </section>
+
+    <section id="admin" class="adminPanel">
+      <h2>Events Admin</h2>
+      <table class="eventsTable">
+        <thead>
+          <tr><th>Event</th><th>Date</th><th>Location</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Farmers Market</td><td>June 12</td><td>Central Park</td></tr>
+          <tr><td>Park Clean-up</td><td>June 19</td><td>Riverside</td></tr>
+          <tr><td>Outdoor Movie</td><td>June 25</td><td>Town Square</td></tr>
+        </tbody>
+      </table>
+
+      <form class="adminForm">
+        <label for="eventName">Event name</label>
+        <input id="eventName" name="eventName" type="text" placeholder="Enter event" />
+
+        <label for="eventDate">Date</label>
+        <input id="eventDate" name="eventDate" type="date" />
+
+        <button class="cta-button" type="submit">Add Event</button>
+      </form>
+    </section>
+
+    <section class="visibilityDemo">
+      <h2>Visibility Demo</h2>
+      <p class="vis-hidden">This text is visibility:hidden (still occupies space).</p>
+      <p class="vis-none">This text uses display:none (removed from flow).</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Local Community</p>
+  </footer>
+</body>
+</html>
