@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 6.1 - Responsive Flexbox Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="display-5">Exercise 6.1: Responsive Flexbox Navbar</h1>
+        <p class="lead">Using d-flex, flex-column, and flex-md-row for responsive navbar</p>
+
+        <h3 class="mt-5">Responsive Navbar Example</h3>
+        <nav class="navbar navbar-expand-md navbar-light bg-light border-bottom mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">My Website</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <h3 class="mt-5">Custom Flexbox Navbar</h3>
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center bg-light p-3 rounded border mb-4">
+            <div class="mb-2 mb-md-0">
+                <h5 class="mb-0">Custom Navbar</h5>
+            </div>
+            <div class="d-flex flex-column flex-md-row gap-2">
+                <a href="#" class="btn btn-sm btn-primary">Home</a>
+                <a href="#" class="btn btn-sm btn-outline-primary">About</a>
+                <a href="#" class="btn btn-sm btn-outline-primary">Services</a>
+                <a href="#" class="btn btn-sm btn-outline-primary">Contact</a>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Menu Stack (Mobile View)</h3>
+        <div class="d-flex flex-column bg-light p-3 rounded border mb-4">
+            <p class="fw-bold mb-3">Menu (Stacked on Mobile):</p>
+            <a href="#" class="btn btn-primary mb-2">Home</a>
+            <a href="#" class="btn btn-outline-primary mb-2">About</a>
+            <a href="#" class="btn btn-outline-primary mb-2">Services</a>
+            <a href="#" class="btn btn-outline-primary">Contact</a>
+        </div>
+
+        <h3 class="mt-5">Menu Row (Desktop View)</h3>
+        <div class="d-flex flex-md-row gap-2 bg-light p-3 rounded border mb-4">
+            <a href="#" class="btn btn-primary">Home</a>
+            <a href="#" class="btn btn-outline-primary">About</a>
+            <a href="#" class="btn btn-outline-primary">Services</a>
+            <a href="#" class="btn btn-outline-primary">Contact</a>
+        </div>
+
+        <h3 class="mt-5">Flexbox Utilities Reference</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>d-flex</code></td>
+                    <td>Display flex (create flex container)</td>
+                </tr>
+                <tr>
+                    <td><code>flex-row</code></td>
+                    <td>Flex direction: row (default, left to right)</td>
+                </tr>
+                <tr>
+                    <td><code>flex-column</code></td>
+                    <td>Flex direction: column (top to bottom)</td>
+                </tr>
+                <tr>
+                    <td><code>flex-md-row</code></td>
+                    <td>Switch to row on medium+ screens</td>
+                </tr>
+                <tr>
+                    <td><code>flex-md-column</code></td>
+                    <td>Switch to column on medium+ screens</td>
+                </tr>
+                <tr>
+                    <td><code>justify-content-start</code></td>
+                    <td>Align items to start (default)</td>
+                </tr>
+                <tr>
+                    <td><code>justify-content-center</code></td>
+                    <td>Center items horizontally</td>
+                </tr>
+                <tr>
+                    <td><code>justify-content-between</code></td>
+                    <td>Distribute items evenly</td>
+                </tr>
+                <tr>
+                    <td><code>align-items-center</code></td>
+                    <td>Center items vertically</td>
+                </tr>
+                <tr>
+                    <td><code>gap-2, gap-3, gap-4</code></td>
+                    <td>Add spacing between flex items</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="alert alert-info mt-5">
+            <strong>Tip:</strong> Resize your browser to see the responsive behavior. On mobile (< 768px), elements stack vertically (flex-column). On desktop (≥ 768px), they arrange in a row (flex-md-row).
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

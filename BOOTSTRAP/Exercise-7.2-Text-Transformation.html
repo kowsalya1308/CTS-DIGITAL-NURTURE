@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7.2 - Text Transformation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 7.2: Text Transformation Utilities</h1>
+        <p class="lead">Using text-uppercase, text-lowercase, text-capitalize utilities.</p>
+
+        <h3 class="mt-5">Text Transformation Examples</h3>
+
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <h4>Original Text</h4>
+                <p class="bg-light p-3 rounded">
+                    "Hello World! This is Bootstrap CSS Framework"
+                </p>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <h4>text-uppercase</h4>
+                <p class="text-uppercase bg-light p-3 rounded">
+                    "Hello World! This is Bootstrap CSS Framework"
+                </p>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <h4>text-lowercase</h4>
+                <p class="text-lowercase bg-light p-3 rounded">
+                    "Hello World! This is Bootstrap CSS Framework"
+                </p>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <h4>text-capitalize</h4>
+                <p class="text-capitalize bg-light p-3 rounded">
+                    "hello world! this is bootstrap css framework"
+                </p>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Practical Examples</h3>
+
+        <h4 class="mt-4">Button Labels</h4>
+        <div class="mb-4">
+            <button class="btn btn-primary text-uppercase me-2">Submit Form</button>
+            <button class="btn btn-secondary text-lowercase me-2">click here</button>
+            <button class="btn btn-success text-capitalize me-2">click for more</button>
+        </div>
+
+        <h4 class="mt-4">Navigation Links</h4>
+        <nav class="navbar navbar-light bg-light mb-4">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">navbar</span>
+                <div>
+                    <a class="nav-link text-uppercase" href="#">home</a>
+                    <a class="nav-link text-uppercase" href="#">about</a>
+                    <a class="nav-link text-uppercase" href="#">contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <h4 class="mt-4">Card Titles</h4>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase">product title</h5>
+                        <p class="card-text">Product description goes here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-lowercase">SERVICE DESCRIPTION</h5>
+                        <p class="card-text">Service description goes here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-capitalize">featured item</h5>
+                        <p class="card-text">Featured item description.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">Form Labels</h4>
+        <form class="mb-4">
+            <div class="mb-3">
+                <label for="username" class="form-label text-uppercase">username</label>
+                <input type="text" class="form-control" id="username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label text-lowercase">PASSWORD</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label text-capitalize">your email address</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <button type="submit" class="btn btn-primary text-uppercase">submit</button>
+        </form>
+
+        <h4 class="mt-4">Page Headings</h4>
+        <h2 class="text-uppercase mb-2">welcome to our website</h2>
+        <p>This is a heading using text-uppercase utility.</p>
+
+        <h2 class="text-lowercase mb-2">LEARN MORE ABOUT BOOTSTRAP</h2>
+        <p>This is a heading using text-lowercase utility.</p>
+
+        <h2 class="text-capitalize mb-2">every word starts with capital</h2>
+        <p>This is a heading using text-capitalize utility.</p>
+
+        <h4 class="mt-4">Table Headers</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-uppercase">name</th>
+                    <th class="text-uppercase">email</th>
+                    <th class="text-uppercase">status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>JOHN@EXAMPLE.COM</td>
+                    <td><span class="text-capitalize">active user</span></td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>JANE@EXAMPLE.COM</td>
+                    <td><span class="text-capitalize">active user</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="mt-5">Responsive Text Transformation</h3>
+        <div class="alert alert-info">
+            <p class="text-sm-lowercase text-md-capitalize text-lg-uppercase">
+                lowercase on mobile, capitalize on tablet, UPPERCASE on desktop
+            </p>
+        </div>
+
+        <h3 class="mt-5">Text Transformation Reference</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>text-lowercase</code></td>
+                    <td>Convert text to lowercase</td>
+                    <td><span class="text-lowercase">Hello World</span></td>
+                </tr>
+                <tr>
+                    <td><code>text-uppercase</code></td>
+                    <td>Convert text to uppercase</td>
+                    <td><span class="text-uppercase">Hello World</span></td>
+                </tr>
+                <tr>
+                    <td><code>text-capitalize</code></td>
+                    <td>Capitalize first letter of each word</td>
+                    <td><span class="text-capitalize">hello world</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

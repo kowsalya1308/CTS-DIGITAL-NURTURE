@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 13.1 - Colors and Backgrounds</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .color-box {
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 13.1: Colors and Backgrounds</h1>
+        <p class="lead">Using contextual background classes and text colors for dashboard.</p>
+
+        <h3 class="mt-5">Background Color Utilities</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="color-box bg-primary">bg-primary</div>
+                <div class="color-box bg-secondary">bg-secondary</div>
+                <div class="color-box bg-success">bg-success</div>
+                <div class="color-box bg-danger">bg-danger</div>
+                <div class="color-box bg-warning text-dark">bg-warning</div>
+                <div class="color-box bg-info">bg-info</div>
+            </div>
+            <div class="col-md-6">
+                <div class="color-box bg-dark">bg-dark</div>
+                <div class="color-box bg-light text-dark">bg-light</div>
+                <div class="color-box bg-body border">bg-body</div>
+                <div class="color-box bg-white text-dark border">bg-white</div>
+                <div class="color-box bg-black">bg-black</div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Text Color Utilities</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-primary">text-primary</p>
+                <p class="text-secondary">text-secondary</p>
+                <p class="text-success">text-success</p>
+                <p class="text-danger">text-danger</p>
+                <p class="text-warning">text-warning</p>
+                <p class="text-info">text-info</p>
+            </div>
+            <div class="col-md-6">
+                <p class="text-dark">text-dark</p>
+                <p class="text-muted">text-muted</p>
+                <p class="bg-dark text-white">text-white</p>
+                <p class="bg-dark text-light">text-light</p>
+                <p class="text-body">text-body</p>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Dashboard Example</h3>
+        <div class="row g-4">
+            <!-- Revenue Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-primary border-2">
+                    <div class="card-body">
+                        <h6 class="card-title text-primary">Revenue</h6>
+                        <h3 class="text-primary mb-0">$12,450</h3>
+                        <small class="text-success">↑ 12% from last month</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-success border-2">
+                    <div class="card-body">
+                        <h6 class="card-title text-success">Users</h6>
+                        <h3 class="text-success mb-0">1,234</h3>
+                        <small class="text-success">↑ 8% from last month</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-warning border-2">
+                    <div class="card-body">
+                        <h6 class="card-title text-warning">Alerts</h6>
+                        <h3 class="text-warning mb-0">23</h3>
+                        <small class="text-danger">↑ 4% from last month</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Errors Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-danger border-2">
+                    <div class="card-body">
+                        <h6 class="card-title text-danger">Errors</h6>
+                        <h3 class="text-danger mb-0">5</h3>
+                        <small class="text-success">↓ 2% from last month</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Alerts with Contextual Colors</h3>
+        <div class="alert alert-primary" role="alert">
+            <strong>Primary Alert!</strong> This is a primary alert message.
+        </div>
+        <div class="alert alert-secondary" role="alert">
+            <strong>Secondary Alert!</strong> This is a secondary alert message.
+        </div>
+        <div class="alert alert-success" role="alert">
+            <strong>Success Alert!</strong> This is a success alert message.
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <strong>Danger Alert!</strong> This is a danger alert message.
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <strong>Warning Alert!</strong> This is a warning alert message.
+        </div>
+        <div class="alert alert-info" role="alert">
+            <strong>Info Alert!</strong> This is an info alert message.
+        </div>
+
+        <h3 class="mt-5">Badges with Colors</h3>
+        <div class="mt-4">
+            <span class="badge bg-primary">Primary</span>
+            <span class="badge bg-secondary">Secondary</span>
+            <span class="badge bg-success">Success</span>
+            <span class="badge bg-danger">Danger</span>
+            <span class="badge bg-warning text-dark">Warning</span>
+            <span class="badge bg-info">Info</span>
+            <span class="badge bg-dark">Dark</span>
+        </div>
+
+        <h3 class="mt-5">Color Utilities Reference</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Utility</th>
+                    <th>Colors Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>bg-*</code></td>
+                    <td>primary, secondary, success, danger, warning, info, light, dark, white, black, body</td>
+                </tr>
+                <tr>
+                    <td><code>text-*</code></td>
+                    <td>primary, secondary, success, danger, warning, info, dark, muted, light, white, body</td>
+                </tr>
+                <tr>
+                    <td><code>alert alert-*</code></td>
+                    <td>primary, secondary, success, danger, warning, info, light, dark</td>
+                </tr>
+                <tr>
+                    <td><code>badge bg-*</code></td>
+                    <td>primary, secondary, success, danger, warning, info, light, dark</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

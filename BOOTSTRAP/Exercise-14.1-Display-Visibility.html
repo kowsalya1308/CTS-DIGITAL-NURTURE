@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14.1 - Display and Visibility</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .demo-element {
+            background-color: #0d6efd;
+            color: white;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 14.1: Display and Visibility</h1>
+        <p class="lead">Using d-none, d-md-block, d-lg-flex to hide/show sections based on screen size.</p>
+
+        <h3 class="mt-5">Basic Display Utilities</h3>
+        
+        <h4 class="mt-4">Display None (Hidden)</h4>
+        <div class="demo-element d-none">This is hidden (d-none)</div>
+        
+        <h4 class="mt-4">Display Block</h4>
+        <div class="demo-element d-block">This is display block (d-block)</div>
+        
+        <h4 class="mt-4">Display Inline</h4>
+        <span class="demo-element d-inline">Inline 1</span>
+        <span class="demo-element d-inline">Inline 2</span>
+        
+        <h4 class="mt-4">Display Inline-Block</h4>
+        <div class="demo-element d-inline-block me-2">Inline-block 1</div>
+        <div class="demo-element d-inline-block">Inline-block 2</div>
+
+        <h3 class="mt-5">Responsive Display Classes</h3>
+        
+        <h4 class="mt-4">Hide on Mobile (d-none d-md-block)</h4>
+        <p><small>This content is hidden on mobile but visible on medium+ screens</small></p>
+        <div class="demo-element d-none d-md-block">
+            ✓ Visible on Medium, Large, XL, XXL screens
+        </div>
+        
+        <h4 class="mt-4">Show Only on Mobile (d-md-none)</h4>
+        <p><small>This content is visible on mobile but hidden on medium+ screens</small></p>
+        <div class="demo-element d-md-none">
+            ✓ Visible only on Extra-Small and Small screens
+        </div>
+
+        <h4 class="mt-4">Show as Flex on Desktop (d-lg-flex)</h4>
+        <p><small>Flex layout on large+ screens, block on smaller screens</small></p>
+        <div class="demo-element d-block d-lg-flex justify-content-between align-items-center">
+            <div>Item 1</div>
+            <div>Item 2</div>
+            <div>Item 3</div>
+        </div>
+
+        <h3 class="mt-5">Practical Responsive Layout Example</h3>
+        <div class="row g-3">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Main Content</h5>
+                        <p class="card-text">This is the main content area that takes up 8 columns on medium+ screens and full width on mobile.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-none d-md-block">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sidebar</h5>
+                        <p class="card-text">This sidebar is hidden on mobile (d-none) but visible on medium+ screens (d-md-block).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Navigation Menu Example</h3>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item d-none d-sm-block">Desktop Menu Item</li>
+                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <h3 class="mt-5">Display Utilities Reference</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>d-none</code></td>
+                    <td>Hide element (display: none)</td>
+                </tr>
+                <tr>
+                    <td><code>d-block</code></td>
+                    <td>Block display</td>
+                </tr>
+                <tr>
+                    <td><code>d-inline</code></td>
+                    <td>Inline display</td>
+                </tr>
+                <tr>
+                    <td><code>d-inline-block</code></td>
+                    <td>Inline-block display</td>
+                </tr>
+                <tr>
+                    <td><code>d-flex</code></td>
+                    <td>Flexbox display</td>
+                </tr>
+                <tr>
+                    <td><code>d-grid</code></td>
+                    <td>CSS Grid display</td>
+                </tr>
+                <tr>
+                    <td><code>d-*-none, d-*-block, etc.</code></td>
+                    <td>Responsive display (sm, md, lg, xl, xxl)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="mt-5">Responsive Breakpoints</h3>
+        <p>Display utilities can be applied at different breakpoints:</p>
+        <ul class="list-group">
+            <li class="list-group-item"><code>d-*</code> - Extra small (all screens)</li>
+            <li class="list-group-item"><code>d-sm-*</code> - Small (≥576px)</li>
+            <li class="list-group-item"><code>d-md-*</code> - Medium (≥768px)</li>
+            <li class="list-group-item"><code>d-lg-*</code> - Large (≥992px)</li>
+            <li class="list-group-item"><code>d-xl-*</code> - Extra Large (≥1200px)</li>
+            <li class="list-group-item"><code>d-xxl-*</code> - 2XL (≥1400px)</li>
+        </ul>
+
+        <div class="alert alert-info mt-5">
+            <strong>Tip:</strong> Resize your browser to see the responsive display changes in action!
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

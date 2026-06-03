@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14.2 - Responsive Sidebar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            min-height: 300px;
+        }
+        .main-content {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 14.2: Responsive Sidebar</h1>
+        <p class="lead">Creating a sidebar that only shows on tablets and above using d-none d-md-block.</p>
+
+        <h3 class="mt-5">Responsive Sidebar Layout</h3>
+        <div class="row">
+            <!-- Sidebar - Hidden on mobile, shown on tablet+ -->
+            <div class="col-md-3 d-none d-md-block mb-3">
+                <div class="sidebar">
+                    <h5 class="mb-3">Sidebar Navigation</h5>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#"><i class="bi bi-house"></i> Dashboard</a>
+                        <a class="nav-link" href="#"><i class="bi bi-people"></i> Users</a>
+                        <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
+                        <a class="nav-link" href="#"><i class="bi bi-question-circle"></i> Help</a>
+                    </nav>
+                    
+                    <h6 class="mt-4 mb-2">Categories</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none">Web Development</a></li>
+                        <li><a href="#" class="text-decoration-none">UI/UX Design</a></li>
+                        <li><a href="#" class="text-decoration-none">Marketing</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-12 col-md-9">
+                <div class="main-content">
+                    <h2>Dashboard</h2>
+                    <p class="lead">Welcome to the responsive sidebar layout.</p>
+                    
+                    <div class="alert alert-info" role="alert">
+                        <strong>Responsive Design:</strong> The sidebar is hidden on mobile devices (<code>d-none</code>) and shown on tablets and larger (<code>d-md-block</code>). Resize your browser to see the change.
+                    </div>
+
+                    <h3 class="mt-4">Content Overview</h3>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title">Total Users</h6>
+                                    <h3>1,234</h3>
+                                    <small class="text-muted">Registered users</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title">Active Sessions</h6>
+                                    <h3>456</h3>
+                                    <small class="text-muted">Currently online</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-4">Recent Activity</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>Logged in</td>
+                                <td>2 mins ago</td>
+                            </tr>
+                            <tr>
+                                <td>Jane Smith</td>
+                                <td>Updated profile</td>
+                                <td>15 mins ago</td>
+                            </tr>
+                            <tr>
+                                <td>Bob Wilson</td>
+                                <td>Logged out</td>
+                                <td>1 hour ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Mobile Menu Alternative</h3>
+        <p class="text-muted">On mobile devices, use a collapsible menu instead:</p>
+        <div class="d-md-none mb-3">
+            <button class="btn btn-primary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+                ☰ Menu
+            </button>
+            <div class="collapse" id="mobileMenu">
+                <div class="card card-body">
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#">Dashboard</a>
+                        <a class="nav-link" href="#">Users</a>
+                        <a class="nav-link" href="#">Settings</a>
+                        <a class="nav-link" href="#">Help</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Display Utilities for Sidebar</h3>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Utility</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>d-none</code></td>
+                    <td>Hide sidebar on all screen sizes</td>
+                </tr>
+                <tr>
+                    <td><code>d-md-block</code></td>
+                    <td>Show as block on medium+ screens</td>
+                </tr>
+                <tr>
+                    <td><code>d-none d-md-block</code></td>
+                    <td>Combined: Hide on mobile, show on tablet+</td>
+                </tr>
+                <tr>
+                    <td><code>d-md-none</code></td>
+                    <td>Hide on medium+ screens (show on mobile)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="mt-5">Best Practices</h3>
+        <ul class="list-group mt-3">
+            <li class="list-group-item">Use <code>d-none d-md-block</code> to hide sidebars on mobile</li>
+            <li class="list-group-item">Provide alternative navigation (hamburger menu) for mobile</li>
+            <li class="list-group-item">Test on different screen sizes</li>
+            <li class="list-group-item">Ensure important content isn't hidden on mobile</li>
+            <li class="list-group-item">Consider touch-friendly interactions for mobile</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

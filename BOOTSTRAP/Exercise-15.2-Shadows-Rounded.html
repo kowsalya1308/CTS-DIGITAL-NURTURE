@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 15.2 - Shadows and Rounded Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 15.2: Shadows and Rounded Pills</h1>
+        <p class="lead">Using shadow, shadow-lg and rounded-pill in a card.</p>
+
+        <h3 class="mt-5">Shadow Variations</h3>
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">No Shadow</h5>
+                        <p class="card-text">Default card without shadow</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Shadow</h5>
+                        <p class="card-text">Standard shadow effect</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-lg">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Shadow-lg</h5>
+                        <p class="card-text">Large shadow effect</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Interactive Shadow Cards</h3>
+        <style>
+            .interactive-card {
+                transition: box-shadow 0.3s, transform 0.3s;
+            }
+            .interactive-card:hover {
+                box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+                transform: translateY(-5px);
+            }
+        </style>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card shadow interactive-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">Hover to see enhanced shadow</p>
+                        <button class="btn btn-primary btn-sm rounded-pill">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow interactive-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">Nice shadow and rounded pill button</p>
+                        <button class="btn btn-success btn-sm rounded-pill">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow interactive-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">Professional card design</p>
+                        <button class="btn btn-info btn-sm rounded-pill">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Rounded Pill Buttons</h3>
+        <div class="mb-4">
+            <button class="btn btn-primary rounded-pill me-2">Primary</button>
+            <button class="btn btn-success rounded-pill me-2">Success</button>
+            <button class="btn btn-danger rounded-pill me-2">Danger</button>
+            <button class="btn btn-warning rounded-pill me-2 text-dark">Warning</button>
+            <button class="btn btn-info rounded-pill me-2">Info</button>
+        </div>
+
+        <h3 class="mt-5">Rounded Pill Badges</h3>
+        <div class="mb-4">
+            <span class="badge rounded-pill bg-primary me-2">New</span>
+            <span class="badge rounded-pill bg-success me-2">Featured</span>
+            <span class="badge rounded-pill bg-danger me-2">Hot</span>
+            <span class="badge rounded-pill bg-warning text-dark">Limited</span>
+        </div>
+
+        <h3 class="mt-5">Premium Feature Card</h3>
+        <div class="card shadow-lg mb-4">
+            <div class="card-body p-5">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h4 class="card-title">Premium Feature</h4>
+                        <p class="card-text">Experience advanced features with premium membership.</p>
+                    </div>
+                    <span class="badge rounded-pill bg-warning text-dark">Popular</span>
+                </div>
+                <ul class="list-group list-group-flush mt-3">
+                    <li class="list-group-item">✓ Unlimited access</li>
+                    <li class="list-group-item">✓ Priority support</li>
+                    <li class="list-group-item">✓ Advanced analytics</li>
+                </ul>
+                <button class="btn btn-primary rounded-pill w-100 mt-4">Upgrade Now</button>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Notification Cards with Shadows</h3>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card border-0 shadow mb-3">
+                    <div class="card-body d-flex">
+                        <div class="me-3" style="font-size: 24px;">📧</div>
+                        <div>
+                            <h6 class="card-title">New Message</h6>
+                            <p class="card-text small text-muted">You have 5 new messages</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card border-0 shadow mb-3">
+                    <div class="card-body d-flex">
+                        <div class="me-3" style="font-size: 24px;">🔔</div>
+                        <div>
+                            <h6 class="card-title">Notification</h6>
+                            <p class="card-text small text-muted">Your upload is complete</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Shadow and Rounded Utilities</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>shadow</code></td>
+                    <td>Standard box shadow</td>
+                </tr>
+                <tr>
+                    <td><code>shadow-lg</code></td>
+                    <td>Large box shadow</td>
+                </tr>
+                <tr>
+                    <td><code>shadow-sm</code></td>
+                    <td>Small box shadow</td>
+                </tr>
+                <tr>
+                    <td><code>shadow-none</code></td>
+                    <td>Remove shadow</td>
+                </tr>
+                <tr>
+                    <td><code>rounded-pill</code></td>
+                    <td>Large border radius for pill shape</td>
+                </tr>
+                <tr>
+                    <td><code>rounded-circle</code></td>
+                    <td>Circular border radius</td>
+                </tr>
+                <tr>
+                    <td><code>rounded-0, rounded-1, rounded-2, rounded-3</code></td>
+                    <td>Different border radius sizes</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

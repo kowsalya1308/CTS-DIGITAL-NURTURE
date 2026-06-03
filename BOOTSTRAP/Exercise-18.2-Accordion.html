@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 18.2 - Accordion and Collapsible</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 18.2: Accordion and Collapsible</h1>
+        <p class="lead">Using Bootstrap accordion and collapsible components.</p>
+
+        <h3 class="mt-5">FAQ Accordion</h3>
+        <div class="accordion mb-5" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        What is Bootstrap?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Bootstrap is a free, open-source CSS framework that helps developers build responsive and mobile-first websites quickly.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        How do I use Bootstrap in my project?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        You can use Bootstrap by linking the CSS and JavaScript files from a CDN, or by installing it via npm. The CDN approach is simplest for beginners.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        Is Bootstrap free?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, Bootstrap is completely free and open-source. You can use it for personal and commercial projects.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                        What browsers does Bootstrap support?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Bootstrap supports all modern browsers including Chrome, Firefox, Safari, and Edge. It also supports IE 11 with some fallbacks.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Simple Collapsible</h3>
+        <div class="mb-5">
+            <button class="btn btn-primary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                <i class="bi bi-chevron-down"></i> Click to expand
+            </button>
+            <div class="collapse" id="collapse1">
+                <div class="card card-body">
+                    This is hidden content that appears when you click the button.
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Multiple Collapsible Items</h3>
+        <div class="mb-5">
+            <button class="btn btn-outline-primary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#item1">
+                Feature 1
+            </button>
+            <div class="collapse mb-2" id="item1">
+                <div class="card card-body">
+                    Feature 1 details and description.
+                </div>
+            </div>
+
+            <button class="btn btn-outline-primary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#item2">
+                Feature 2
+            </button>
+            <div class="collapse mb-2" id="item2">
+                <div class="card card-body">
+                    Feature 2 details and description.
+                </div>
+            </div>
+
+            <button class="btn btn-outline-primary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#item3">
+                Feature 3
+            </button>
+            <div class="collapse mb-2" id="item3">
+                <div class="card card-body">
+                    Feature 3 details and description.
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Product Features with Accordion</h3>
+        <div class="accordion" id="productAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#pro1">
+                        <i class="bi bi-gear me-2"></i> Features
+                    </button>
+                </h2>
+                <div id="pro1" class="accordion-collapse collapse show" data-bs-parent="#productAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Responsive design</li>
+                            <li>Fast performance</li>
+                            <li>Easy to customize</li>
+                            <li>Great documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro2">
+                        <i class="bi bi-tag me-2"></i> Pricing
+                    </button>
+                </h2>
+                <div id="pro2" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                    <div class="accordion-body">
+                        Free to use for personal and commercial projects. No licensing fees.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro3">
+                        <i class="bi bi-question-circle me-2"></i> Support
+                    </button>
+                </h2>
+                <div id="pro3" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                    <div class="accordion-body">
+                        Community support available on GitHub. Official documentation available at getbootstrap.com.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Accordion Components</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Component</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.accordion</code></td>
+                    <td>Container for accordion items</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-item</code></td>
+                    <td>Individual accordion item</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-header</code></td>
+                    <td>Clickable header button</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-button</code></td>
+                    <td>Button that controls collapse/expand</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-collapse</code></td>
+                    <td>Content area that toggles</td>
+                </tr>
+                <tr>
+                    <td><code>.accordion-body</code></td>
+                    <td>Text content within collapsed area</td>
+                </tr>
+                <tr>
+                    <td><code>data-bs-parent</code></td>
+                    <td>Only one item open at a time</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

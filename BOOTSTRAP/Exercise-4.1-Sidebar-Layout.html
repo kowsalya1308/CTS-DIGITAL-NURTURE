@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4.1 - Two Column Sidebar Layout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .sidebar {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .main-content {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 4.1: Two Column Sidebar Layout</h1>
+        <p class="lead">Sidebar (col-md-3) and Content Area (col-md-9)</p>
+
+        <h3 class="mt-5">Main Layout</h3>
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="sidebar">
+                    <h5>Sidebar Menu</h5>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#home">Home</a>
+                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#services">Services</a>
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                        <a class="nav-link" href="#blog">Blog</a>
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </nav>
+                    
+                    <h5 class="mt-4">Recent Posts</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Post 1</a></li>
+                        <li><a href="#">Post 2</a></li>
+                        <li><a href="#">Post 3</a></li>
+                    </ul>
+
+                    <h5 class="mt-4">Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><span class="badge bg-primary">Web Design</span></li>
+                        <li><span class="badge bg-secondary">Development</span></li>
+                        <li><span class="badge bg-success">UI/UX</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="main-content">
+                    <h2>Welcome to the Main Content Area</h2>
+                    <p class="lead">This is a typical two-column layout with a sidebar on the left and main content on the right.</p>
+
+                    <h3 class="mt-4">Article Title</h3>
+                    <p class="text-muted">Published on June 1, 2026 by Admin</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card 1</h5>
+                                    <p class="card-text">Additional content in the main area.</p>
+                                    <a href="#" class="btn btn-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card 2</h5>
+                                    <p class="card-text">More content cards can be added here.</p>
+                                    <a href="#" class="btn btn-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-5">Section Two</h3>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <blockquote class="blockquote mt-4">
+                        <p>"This is a bootstrap layout that demonstrates proper use of the grid system for creating responsive designs."</p>
+                        <footer class="blockquote-footer">Bootstrap Documentation</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-5">
+            <strong>Responsive Note:</strong> On mobile devices, the sidebar will stack above the main content because col-md-* only applies on medium+ screens.
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

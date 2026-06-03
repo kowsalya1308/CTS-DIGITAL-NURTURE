@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2.1 - Bootstrap Directory Structure</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+        .folder-structure {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 2.1: Bootstrap Directory Structure</h1>
+        <p class="lead">Understanding the Bootstrap 5 file organization.</p>
+
+        <div class="row mt-5">
+            <div class="col-lg-8">
+                <h3>Bootstrap 5 Directory Structure</h3>
+                <div class="folder-structure">
+                    <div>bootstrap-5.x.x/</div>
+                    <div style="margin-left: 20px;">├── <strong style="color: #0d6efd;">dist/</strong> (Compiled CSS and JS)</div>
+                    <div style="margin-left: 40px;">│   ├── css/</div>
+                    <div style="margin-left: 60px;">│   │   ├── bootstrap.css</div>
+                    <div style="margin-left: 60px;">│   │   ├── bootstrap.min.css</div>
+                    <div style="margin-left: 60px;">│   │   └── bootstrap.rtl.min.css (RTL support)</div>
+                    <div style="margin-left: 40px;">│   └── js/</div>
+                    <div style="margin-left: 60px;">│       ├── bootstrap.js</div>
+                    <div style="margin-left: 60px;">│       ├── bootstrap.bundle.js</div>
+                    <div style="margin-left: 60px;">│       └── bootstrap.bundle.min.js</div>
+                    <div style="margin-left: 20px;">├── <strong style="color: #0d6efd;">scss/</strong> (Sass source files)</div>
+                    <div style="margin-left: 40px;">│   ├── _variables.scss</div>
+                    <div style="margin-left: 40px;">│   ├── _functions.scss</div>
+                    <div style="margin-left: 40px;">│   ├── _mixins.scss</div>
+                    <div style="margin-left: 40px;">│   ├── _root.scss</div>
+                    <div style="margin-left: 40px;">│   ├── bootstrap.scss</div>
+                    <div style="margin-left: 40px;">│   └── (component SCSS files)</div>
+                    <div style="margin-left: 20px;">├── <strong style="color: #0d6efd;">js/</strong> (JavaScript source files)</div>
+                    <div style="margin-left: 40px;">│   ├── alert.js</div>
+                    <div style="margin-left: 40px;">│   ├── button.js</div>
+                    <div style="margin-left: 40px;">│   ├── carousel.js</div>
+                    <div style="margin-left: 40px;">│   └── (other component JS)</div>
+                    <div style="margin-left: 20px;">└── <strong style="color: #0d6efd;">docs/</strong> (Documentation)</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h3>Key Folder Purposes</h3>
+                
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">
+                        <strong>dist/ Folder</strong>
+                    </div>
+                    <div class="card-body">
+                        <p>Contains <strong>compiled and minified</strong> CSS and JavaScript files ready for production use.</p>
+                        <small class="text-muted">Use these in production websites.</small>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-success text-white">
+                        <strong>scss/ Folder</strong>
+                    </div>
+                    <div class="card-body">
+                        <p>Contains <strong>Sass source files</strong> for customization and compilation.</p>
+                        <small class="text-muted">Customize variables and recompile Bootstrap.</small>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-info text-white">
+                        <strong>js/ Folder</strong>
+                    </div>
+                    <div class="card-body">
+                        <p>Contains <strong>JavaScript component source files</strong> (requires bundler).</p>
+                        <small class="text-muted">For advanced customization with build tools.</small>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <strong>docs/ Folder</strong>
+                    </div>
+                    <div class="card-body">
+                        <p>Contains the <strong>Bootstrap documentation</strong> website source.</p>
+                        <small class="text-muted">Reference for component usage and examples.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-5">
+            <strong>Tip:</strong> For most projects, you only need the <code>dist/</code> folder files. Use <code>scss/</code> only if customizing Bootstrap colors and variables.
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

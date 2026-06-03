@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2.2 - Bootstrap JavaScript Plugins</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 2.2: Bootstrap JavaScript Plugins</h1>
+        <p class="lead">Using bootstrap.bundle.min.js for interactive components.</p>
+
+        <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+                <h3>Available JavaScript Plugins</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Alert - Dismiss alert messages</li>
+                    <li class="list-group-item">Button - Toggle button states</li>
+                    <li class="list-group-item">Carousel - Image slider</li>
+                    <li class="list-group-item">Collapse - Expandable content</li>
+                    <li class="list-group-item">Dropdown - Dropdown menus</li>
+                    <li class="list-group-item">Modal - Dialog boxes</li>
+                    <li class="list-group-item">Offcanvas - Side panels</li>
+                    <li class="list-group-item">Popover - Popup tooltips</li>
+                    <li class="list-group-item">Scrollspy - Active link tracking</li>
+                    <li class="list-group-item">Tab - Tab navigation</li>
+                    <li class="list-group-item">Toast - Notifications</li>
+                    <li class="list-group-item">Tooltip - Hover tips</li>
+                </ul>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h3>Bundle vs Individual Files</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">bootstrap.bundle.min.js</h5>
+                        <p class="card-text">✓ Includes all Bootstrap plugins</p>
+                        <p class="card-text">✓ Includes Popper.js (for dropdowns/tooltips)</p>
+                        <p class="card-text">✓ Recommended for most projects</p>
+                        <p class="card-text">✓ No external dependencies needed</p>
+                        <code class="d-block mt-3">~87 KB minified</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Interactive Demo</h3>
+
+        <!-- Modal Example -->
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch Modal
+        </button>
+
+        <!-- Collapse Example -->
+        <button class="btn btn-success mb-3" data-bs-toggle="collapse" data-bs-target="#collapseExample">
+            Toggle Collapse
+        </button>
+        <div class="collapse mt-2" id="collapseExample">
+            <div class="card card-body">
+                This content is toggled using Bootstrap's collapse plugin.
+            </div>
+        </div>
+
+        <!-- Alert Example -->
+        <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+            <strong>Dismissible Alert!</strong> Click the X to close this alert using Bootstrap JavaScript.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <!-- Dropdown Example -->
+        <div class="dropdown mt-3 mb-5">
+            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Click for Dropdown
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action 1</a></li>
+                <li><a class="dropdown-item" href="#">Action 2</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else</a></li>
+            </ul>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal Title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        This modal was triggered by the button above using Bootstrap JavaScript plugins.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-5">
+            <strong>Important:</strong> Always include <code>bootstrap.bundle.min.js</code> for plugins to work. 
+            It must come AFTER your HTML content.
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Bundle - Includes all plugins + Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

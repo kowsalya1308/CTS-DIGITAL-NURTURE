@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 19.2 - Custom Variables and Theme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .color-swatch {
+            width: 100px;
+            height: 100px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 19.2: Custom Variables and Theme</h1>
+        <p class="lead">Customize Bootstrap variables for a custom brand theme.</p>
+
+        <h3 class="mt-5">Custom Sass Variables Example</h3>
+        <p>Create a custom theme by overriding Bootstrap variables:</p>
+
+        <div class="code-block">
+// Override Bootstrap Variables (before importing Bootstrap)<br>
+<br>
+// Colors<br>
+$primary: #6366f1;       // Indigo<br>
+$secondary: #64748b;     // Slate<br>
+$success: #10b981;       // Emerald<br>
+$danger: #ef4444;        // Red<br>
+$warning: #f59e0b;       // Amber<br>
+$info: #06b6d4;          // Cyan<br>
+<br>
+// Typography<br>
+$body-font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;<br>
+$body-font-size: 1rem;<br>
+$body-font-weight: 400;<br>
+$body-line-height: 1.6;<br>
+<br>
+// Headings<br>
+$h1-font-size: 2.5rem;<br>
+$h2-font-size: 2rem;<br>
+$h3-font-size: 1.5rem;<br>
+$headings-font-weight: 600;<br>
+<br>
+// Borders<br>
+$border-radius: 0.5rem;<br>
+$border-radius-lg: 0.75rem;<br>
+$border-radius-sm: 0.25rem;<br>
+<br>
+// Spacing<br>
+$spacer: 1rem;<br>
+<br>
+// Shadows<br>
+$box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);<br>
+$box-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);<br>
+        </div>
+
+        <h3 class="mt-5">Custom Color Palette</h3>
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="color-swatch" style="background-color: #6366f1;">
+                    Primary<br>#6366f1
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="color-swatch" style="background-color: #10b981;">
+                    Success<br>#10b981
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="color-swatch" style="background-color: #ef4444;">
+                    Danger<br>#ef4444
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="color-swatch" style="background-color: #f59e0b;">
+                    Warning<br>#f59e0b
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">How to Apply Custom Variables</h3>
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item">
+                <strong>Step 1: Create scss/custom.scss</strong>
+                <div class="code-block mt-2">
+// Override variables BEFORE importing Bootstrap<br>
+$primary: #6366f1;<br>
+$border-radius: 0.5rem;<br>
+<br>
+// Then import Bootstrap<br>
+@import "../node_modules/bootstrap/scss/functions";<br>
+@import "../node_modules/bootstrap/scss/variables";<br>
+// ... rest of imports
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <strong>Step 2: Compile with npm script</strong>
+                <div class="code-block mt-2">
+{<br>
+&nbsp;&nbsp;"scripts": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"sass": "sass scss/custom.scss css/custom.css"<br>
+&nbsp;&nbsp;}<br>
+}
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <strong>Step 3: Run compilation</strong>
+                <div class="code-block mt-2">
+npm run sass
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <strong>Step 4: Link compiled CSS in HTML</strong>
+                <div class="code-block mt-2">
+&lt;link rel="stylesheet" href="css/custom.css"&gt;
+                </div>
+            </li>
+        </ol>
+
+        <h3 class="mt-5">Customizable Bootstrap Components</h3>
+        <div class="alert alert-info">
+            <h5>These components update automatically with custom variables:</h5>
+            <ul class="mb-0">
+                <li>Buttons (all contextual colors)</li>
+                <li>Alerts and badges</li>
+                <li>Cards and panels</li>
+                <li>Forms and inputs</li>
+                <li>Navbar and navigation</li>
+                <li>Modals and dropdowns</li>
+                <li>All utility classes</li>
+            </ul>
+        </div>
+
+        <h3 class="mt-5">Example: Custom Button Styles</h3>
+        <div class="mb-5">
+            <button class="btn btn-primary me-2">Primary Button</button>
+            <button class="btn btn-secondary me-2">Secondary Button</button>
+            <button class="btn btn-success me-2">Success Button</button>
+            <button class="btn btn-danger me-2">Danger Button</button>
+            <button class="btn btn-warning me-2 text-dark">Warning Button</button>
+        </div>
+
+        <h3 class="mt-5">Advanced Customization</h3>
+        <div class="card mb-5">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Custom Mixins</h5>
+            </div>
+            <div class="card-body">
+                <p>Create your own Sass mixins for additional functionality:</p>
+                <div class="code-block">
+@mixin gradient-bg($color1, $color2) {<br>
+&nbsp;&nbsp;background: linear-gradient(135deg, $color1, $color2);<br>
+}<br>
+<br>
+.custom-gradient {<br>
+&nbsp;&nbsp;@include gradient-bg(#6366f1, #3b82f6);<br>
+&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;padding: 20px;<br>
+&nbsp;&nbsp;border-radius: $border-radius-lg;<br>
+}
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Variable Categories</h3>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Category</th>
+                    <th>Variables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Colors</td>
+                    <td>$primary, $secondary, $success, $danger, $warning, $info</td>
+                </tr>
+                <tr>
+                    <td>Typography</td>
+                    <td>$body-font-family, $body-font-size, $headings-font-weight</td>
+                </tr>
+                <tr>
+                    <td>Borders</td>
+                    <td>$border-radius, $border-width, $border-color</td>
+                </tr>
+                <tr>
+                    <td>Spacing</td>
+                    <td>$spacer, $gutters (grid spacing)</td>
+                </tr>
+                <tr>
+                    <td>Shadows</td>
+                    <td>$box-shadow, $box-shadow-lg, $box-shadow-sm</td>
+                </tr>
+                <tr>
+                    <td>Breakpoints</td>
+                    <td>$sm, $md, $lg, $xl, $xxl</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="mt-5">Best Practices</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Keep custom variables in a separate file</li>
+            <li class="list-group-item">Document your custom variables with comments</li>
+            <li class="list-group-item">Test compiled CSS in all target browsers</li>
+            <li class="list-group-item">Use CSS custom properties for runtime changes</li>
+            <li class="list-group-item">Version control your Sass files, not just compiled CSS</li>
+            <li class="list-group-item">Keep variable naming consistent with Bootstrap conventions</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

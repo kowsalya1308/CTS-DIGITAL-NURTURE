@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 15.1 - Borders and Rounded Corners</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 15.1: Borders, Shadows, and Rounded Corners</h1>
+        <p class="lead">Add border utilities like border, border-primary, border-3, and rounded-circle to an image.</p>
+
+        <h3 class="mt-5">Border Styles</h3>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/200x200?text=No+Border" class="img-fluid" alt="No Border">
+                <p class="mt-2">No border</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/200x200?text=Border" class="img-fluid border" alt="Border">
+                <p class="mt-2"><code>border</code> - 1px solid border</p>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Border Colors</h3>
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Primary" class="img-fluid border border-primary" alt="Primary">
+                <p class="mt-2"><code>border-primary</code></p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Success" class="img-fluid border border-success" alt="Success">
+                <p class="mt-2"><code>border-success</code></p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Danger" class="img-fluid border border-danger" alt="Danger">
+                <p class="mt-2"><code>border-danger</code></p>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Border Width</h3>
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Border+1" class="img-fluid border border-1" alt="Border 1px">
+                <p class="mt-2"><code>border-1</code> (1px)</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Border+3" class="img-fluid border border-3 border-primary" alt="Border 3px">
+                <p class="mt-2"><code>border-3</code> (3px)</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Border+5" class="img-fluid border border-5 border-success" alt="Border 5px">
+                <p class="mt-2"><code>border-5</code> (5px)</p>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Rounded Corners</h3>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/200x150?text=Sharp" class="img-fluid" alt="Sharp">
+                <p class="mt-2">No rounded corners</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/200x150?text=Rounded" class="img-fluid rounded" alt="Rounded">
+                <p class="mt-2"><code>rounded</code> - Default border-radius</p>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Rounded Variations</h3>
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Circle" class="img-fluid rounded-circle border border-3" alt="Circle" style="width: 150px; height: 150px; object-fit: cover;">
+                <p class="mt-2"><code>rounded-circle</code> - Circular image</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Pill" class="img-fluid rounded-pill" alt="Pill">
+                <p class="mt-2"><code>rounded-pill</code> - Pill-shaped</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Rounded" class="img-fluid rounded-start" alt="Start">
+                <p class="mt-2"><code>rounded-start</code></p>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Combined Borders and Rounded Corners</h3>
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Combo+1" class="img-fluid border border-3 border-primary rounded" alt="Combo 1">
+                <p class="mt-2 text-center"><code>border border-3 border-primary rounded</code></p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Combo+2" class="img-fluid border border-5 border-success rounded-circle" alt="Combo 2" style="width: 150px; height: 150px; object-fit: cover;">
+                <p class="mt-2 text-center"><code>border border-5 border-success rounded-circle</code></p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/150x150?text=Combo+3" class="img-fluid border border-3 border-danger rounded-pill" alt="Combo 3">
+                <p class="mt-2 text-center"><code>border border-3 border-danger rounded-pill</code></p>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Profile Card with Borders and Rounded</h3>
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/200x200?text=Avatar" class="card-img-top rounded-top border-bottom border-3 border-primary" alt="Avatar">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">John Doe</h5>
+                        <p class="card-text text-muted">Web Developer</p>
+                        <button class="btn btn-primary btn-sm rounded-pill">Follow</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Border Utilities Reference</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>border</code></td>
+                    <td>Add 1px border on all sides</td>
+                </tr>
+                <tr>
+                    <td><code>border-1, border-2, border-3, border-4, border-5</code></td>
+                    <td>Border width from 1px to 5px</td>
+                </tr>
+                <tr>
+                    <td><code>border-primary, border-success, etc.</code></td>
+                    <td>Border colors</td>
+                </tr>
+                <tr>
+                    <td><code>border-top, border-bottom, border-start, border-end</code></td>
+                    <td>Single side borders</td>
+                </tr>
+                <tr>
+                    <td><code>rounded</code></td>
+                    <td>Default border-radius (0.25rem)</td>
+                </tr>
+                <tr>
+                    <td><code>rounded-circle</code></td>
+                    <td>50% border-radius (circular)</td>
+                </tr>
+                <tr>
+                    <td><code>rounded-pill</code></td>
+                    <td>Large border-radius (pill shape)</td>
+                </tr>
+                <tr>
+                    <td><code>rounded-0, rounded-1, rounded-2, rounded-3</code></td>
+                    <td>Different corner radius sizes</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

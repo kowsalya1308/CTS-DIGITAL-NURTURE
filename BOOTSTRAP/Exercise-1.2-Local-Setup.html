@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1.2 - Bootstrap 5 Local Setup</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4">Exercise 1.2: Bootstrap 5 Local Setup</h1>
+        <p class="lead">This page uses locally downloaded Bootstrap 5 files.</p>
+        
+        <div class="alert alert-info" role="alert">
+            <strong>Note:</strong> This setup requires downloading Bootstrap 5 files and placing them in a <code>bootstrap</code> folder.
+        </div>
+
+        <h2 class="mt-4">Project Structure</h2>
+        <p>Expected folder structure:</p>
+        <pre><code>project-folder/
+├── index.html
+├── bootstrap/
+│   ├── css/
+│   │   ├── bootstrap.min.css
+│   │   └── bootstrap.css
+│   ├── js/
+│   │   ├── bootstrap.bundle.min.js
+│   │   └── bootstrap.bundle.js
+│   └── (source files if using Sass)
+└── js/
+    └── main.js (optional)</code></pre>
+
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <h3>Advantages of Local Setup</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Works offline</li>
+                    <li class="list-group-item">Faster loading from local disk</li>
+                    <li class="list-group-item">Easy to customize Sass files</li>
+                    <li class="list-group-item">No CDN dependency</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <h3>Installation Steps</h3>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Download Bootstrap from getbootstrap.com</li>
+                    <li class="list-group-item">Extract to your project folder</li>
+                    <li class="list-group-item">Link CSS and JS files in HTML</li>
+                    <li class="list-group-item">Include bootstrap.bundle.min.js for plugins</li>
+                </ol>
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-4">Primary Button</button>
+        <button class="btn btn-success">Success Button</button>
+    </div>
+
+    <!-- Link local Bootstrap JavaScript -->
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

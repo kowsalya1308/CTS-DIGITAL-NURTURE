@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5.2 - Column Reordering</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .order-box {
+            background-color: #0d6efd;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 5.2: Column Reordering</h1>
+        <p class="lead">Using order-md-1, order-md-2, etc. to reorder columns on different screen sizes</p>
+
+        <h3 class="mt-5">Example 1: Basic Reordering</h3>
+        <div class="alert alert-info">
+            <strong>On Desktop:</strong> Column 2 appears first, Column 1 second<br>
+            <strong>On Mobile:</strong> Columns appear in natural order (HTML order)
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 order-md-2">
+                <div class="order-box">Column 1 - order-md-2 (Second on desktop)</div>
+            </div>
+            <div class="col-md-6 order-md-1">
+                <div class="order-box">Column 2 - order-md-1 (First on desktop)</div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Example 2: Three Column Reorder</h3>
+        <div class="alert alert-info">
+            <strong>Desktop Order:</strong> 2 → 3 → 1<br>
+            <strong>Mobile Order:</strong> 1 → 2 → 3 (natural order)
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4 order-md-3">
+                <div class="order-box">Column 1 - order-md-3</div>
+            </div>
+            <div class="col-md-4 order-md-1">
+                <div class="order-box">Column 2 - order-md-1 (First)</div>
+            </div>
+            <div class="col-md-4 order-md-2">
+                <div class="order-box">Column 3 - order-md-2 (Second)</div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Example 3: Different Reordering at Different Breakpoints</h3>
+        <div class="alert alert-info">
+            <strong>Mobile:</strong> 1 → 2 → 3<br>
+            <strong>Tablet (md):</strong> 3 → 1 → 2<br>
+            <strong>Desktop (lg):</strong> 2 → 3 → 1
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-4 col-md-4 order-lg-2 order-md-2">
+                <div class="order-box">Column 1<br><small>order-md-2 order-lg-2</small></div>
+            </div>
+            <div class="col-lg-4 col-md-4 order-lg-3 order-md-3">
+                <div class="order-box">Column 2<br><small>order-md-3 order-lg-3</small></div>
+            </div>
+            <div class="col-lg-4 col-md-4 order-lg-1 order-md-1">
+                <div class="order-box">Column 3<br><small>order-md-1 order-lg-1</small></div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Practical Example: Responsive Layout</h3>
+        <p>Sidebar on right on mobile, left on desktop:</p>
+        <div class="row mt-3">
+            <div class="col-md-8 order-md-1">
+                <div class="order-box">Main Content - order-md-1</div>
+            </div>
+            <div class="col-md-4 order-md-2">
+                <div class="order-box">Sidebar - order-md-2</div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Order Utilities Reference</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>order-1, order-2, ..., order-12</code></td>
+                    <td>Set order for all screen sizes</td>
+                </tr>
+                <tr>
+                    <td><code>order-sm-1, order-sm-2, ...</code></td>
+                    <td>Set order on small screens (≥576px)</td>
+                </tr>
+                <tr>
+                    <td><code>order-md-1, order-md-2, ...</code></td>
+                    <td>Set order on medium screens (≥768px)</td>
+                </tr>
+                <tr>
+                    <td><code>order-lg-1, order-lg-2, ...</code></td>
+                    <td>Set order on large screens (≥992px)</td>
+                </tr>
+                <tr>
+                    <td><code>order-xl-1, order-xl-2, ...</code></td>
+                    <td>Set order on extra-large screens (≥1200px)</td>
+                </tr>
+                <tr>
+                    <td><code>order-xxl-1, order-xxl-2, ...</code></td>
+                    <td>Set order on 2xl screens (≥1400px)</td>
+                </tr>
+                <tr>
+                    <td><code>order-first</code></td>
+                    <td>Set order to -1 (appears first)</td>
+                </tr>
+                <tr>
+                    <td><code>order-last</code></td>
+                    <td>Set order to 13 (appears last)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="alert alert-success mt-5">
+            <strong>Tip:</strong> Order values range from 1-12. Resize your browser to see the reordering in action!
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

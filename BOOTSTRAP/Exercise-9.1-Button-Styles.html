@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 9.1 - Button Styles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .button-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 9.1: Button Contextual Styles</h1>
+        <p class="lead">Using all contextual classes: btn-primary, btn-secondary, btn-outline-*, etc.</p>
+
+        <h3 class="mt-5">Solid Buttons</h3>
+        <div class="button-section">
+            <button class="btn btn-primary me-2">Primary</button>
+            <button class="btn btn-secondary me-2">Secondary</button>
+            <button class="btn btn-success me-2">Success</button>
+            <button class="btn btn-danger me-2">Danger</button>
+            <button class="btn btn-warning me-2">Warning</button>
+            <button class="btn btn-info me-2">Info</button>
+            <button class="btn btn-light me-2">Light</button>
+            <button class="btn btn-dark me-2">Dark</button>
+        </div>
+
+        <h3 class="mt-5">Outline Buttons</h3>
+        <div class="button-section">
+            <button class="btn btn-outline-primary me-2">Primary</button>
+            <button class="btn btn-outline-secondary me-2">Secondary</button>
+            <button class="btn btn-outline-success me-2">Success</button>
+            <button class="btn btn-outline-danger me-2">Danger</button>
+            <button class="btn btn-outline-warning me-2">Warning</button>
+            <button class="btn btn-outline-info me-2">Info</button>
+            <button class="btn btn-outline-light me-2">Light</button>
+            <button class="btn btn-outline-dark me-2">Dark</button>
+        </div>
+
+        <h3 class="mt-5">Button Sizes</h3>
+        <div class="button-section">
+            <button class="btn btn-primary btn-lg me-2">Large Button</button>
+            <button class="btn btn-primary me-2">Normal Button</button>
+            <button class="btn btn-primary btn-sm me-2">Small Button</button>
+        </div>
+
+        <h3 class="mt-5">Button States</h3>
+        <div class="button-section">
+            <button class="btn btn-primary me-2">Default</button>
+            <button class="btn btn-primary active me-2">Active</button>
+            <button class="btn btn-primary disabled me-2" disabled>Disabled</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="button">Toggle Button</button>
+        </div>
+
+        <h3 class="mt-5">Button Width</h3>
+        <div class="button-section">
+            <div class="d-grid gap-2 mb-3">
+                <button class="btn btn-primary" type="button">Full Width Button</button>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-secondary" type="button">Half Width Button</button>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Button Groups</h3>
+        <div class="button-section">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary">Left</button>
+                <button type="button" class="btn btn-outline-primary">Middle</button>
+                <button type="button" class="btn btn-outline-primary">Right</button>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Link Buttons</h3>
+        <div class="button-section">
+            <a class="btn btn-primary me-2" href="#" role="button">Link Button</a>
+            <a class="btn btn-outline-success" href="#" role="button">Link Outline</a>
+        </div>
+
+        <h3 class="mt-5">Button with Icons</h3>
+        <div class="button-section">
+            <button class="btn btn-primary me-2">
+                <span>📥</span> Download
+            </button>
+            <button class="btn btn-success me-2">
+                <span>✓</span> Approve
+            </button>
+            <button class="btn btn-danger me-2">
+                <span>✕</span> Delete
+            </button>
+            <button class="btn btn-info me-2">
+                <span>ℹ</span> Info
+            </button>
+        </div>
+
+        <h3 class="mt-5">Button Reference Table</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>btn btn-primary</code></td>
+                    <td>Primary button</td>
+                </tr>
+                <tr>
+                    <td><code>btn btn-outline-primary</code></td>
+                    <td>Outline primary button</td>
+                </tr>
+                <tr>
+                    <td><code>btn btn-secondary</code></td>
+                    <td>Secondary button</td>
+                </tr>
+                <tr>
+                    <td><code>btn-lg, btn-sm</code></td>
+                    <td>Button sizes</td>
+                </tr>
+                <tr>
+                    <td><code>disabled</code></td>
+                    <td>Disable button</td>
+                </tr>
+                <tr>
+                    <td><code>active</code></td>
+                    <td>Active state</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

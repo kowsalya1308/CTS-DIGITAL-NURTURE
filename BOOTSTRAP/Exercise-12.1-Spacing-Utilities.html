@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 12.1 - Spacing Utilities</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .example-box {
+            background-color: #e7f3ff;
+            border: 2px dashed #0d6efd;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 12.1: Spacing Utilities</h1>
+        <p class="lead">Applying margin (m-*, mt-*, mb-*, etc.) and padding (p-*, pt-*, pb-*, etc.) utilities.</p>
+
+        <h3 class="mt-5">Margin Examples</h3>
+        
+        <h4 class="mt-4">Margin Top (mt-*)</h4>
+        <div class="example-box">Default</div>
+        <div class="example-box mt-1">mt-1</div>
+        <div class="example-box mt-2">mt-2</div>
+        <div class="example-box mt-3">mt-3</div>
+        <div class="example-box mt-4">mt-4</div>
+        <div class="example-box mt-5">mt-5</div>
+
+        <h4 class="mt-5">Margin Bottom (mb-*)</h4>
+        <div class="example-box mb-0">mb-0</div>
+        <div class="example-box mb-2">mb-2</div>
+        <div class="example-box mb-3">mb-3</div>
+        <div class="example-box mb-4">mb-4</div>
+
+        <h4 class="mt-5">Margin Left (ms-*) and Right (me-*)</h4>
+        <div class="example-box ms-3">ms-3 (margin-left)</div>
+        <div class="example-box me-3">me-3 (margin-right)</div>
+        <div class="example-box ms-auto">ms-auto (push right)</div>
+        <div class="example-box me-auto">me-auto (push left)</div>
+
+        <h4 class="mt-5">Margin X (mx-*) and Y (my-*)</h4>
+        <div class="example-box mx-5">mx-5 (left + right margins)</div>
+        <div class="example-box my-3">my-3 (top + bottom margins)</div>
+
+        <h3 class="mt-5">Padding Examples</h3>
+
+        <h4 class="mt-4">Padding All Sides (p-*)</h4>
+        <div class="example-box p-0">p-0</div>
+        <div class="example-box p-1">p-1</div>
+        <div class="example-box p-2">p-2</div>
+        <div class="example-box p-3">p-3</div>
+        <div class="example-box p-4">p-4</div>
+        <div class="example-box p-5">p-5</div>
+
+        <h4 class="mt-5">Padding Top (pt-*) and Bottom (pb-*)</h4>
+        <div class="example-box pt-3">pt-3 (padding-top)</div>
+        <div class="example-box pb-3">pb-3 (padding-bottom)</div>
+        <div class="example-box py-5">py-5 (top + bottom padding)</div>
+
+        <h4 class="mt-5">Padding Left (ps-*) and Right (pe-*)</h4>
+        <div class="example-box ps-3">ps-3 (padding-left)</div>
+        <div class="example-box pe-3">pe-3 (padding-right)</div>
+        <div class="example-box px-5">px-5 (left + right padding)</div>
+
+        <h3 class="mt-5">Practical Example: Card Spacing</h3>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Section with Spacing</h5>
+            </div>
+            <div class="card-body">
+                <h6 class="mb-3">Subtitle with margin-bottom</h6>
+                <p class="mb-4">Paragraph with spacing utilities for better readability and visual hierarchy.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="bg-light p-3 rounded">Column with padding</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-light p-3 rounded">Column with padding</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Pricing Section Example</h3>
+        <div class="row g-4 mt-4">
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4 class="mb-3">Starter</h4>
+                    <div class="mb-4">
+                        <span class="display-4">$9</span>
+                        <small class="text-muted">/month</small>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">✓ Feature 1</li>
+                        <li class="mb-2">✓ Feature 2</li>
+                        <li class="mb-3">✗ Feature 3</li>
+                    </ul>
+                    <button class="btn btn-outline-primary w-100">Get Started</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-4 text-center border-primary">
+                    <span class="badge bg-primary mb-3">Popular</span>
+                    <h4 class="mb-3">Professional</h4>
+                    <div class="mb-4">
+                        <span class="display-4">$29</span>
+                        <small class="text-muted">/month</small>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">✓ Feature 1</li>
+                        <li class="mb-2">✓ Feature 2</li>
+                        <li class="mb-3">✓ Feature 3</li>
+                    </ul>
+                    <button class="btn btn-primary w-100">Choose Plan</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4 class="mb-3">Enterprise</h4>
+                    <div class="mb-4">
+                        <span class="display-4">$99</span>
+                        <small class="text-muted">/month</small>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">✓ Feature 1</li>
+                        <li class="mb-2">✓ Feature 2</li>
+                        <li class="mb-3">✓ Feature 3</li>
+                    </ul>
+                    <button class="btn btn-outline-primary w-100">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Spacing Scale Reference</h3>
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Value (rem)</th>
+                    <th>Pixels (px)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0.25</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0.5</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>16</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>1.5</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>48</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="mt-5">Spacing Utilities Legend</h3>
+        <ul class="list-group mt-4">
+            <li class="list-group-item"><code>m-*</code> = Margin all sides</li>
+            <li class="list-group-item"><code>mt-*, mb-*, ms-*, me-*</code> = Margin top, bottom, left, right</li>
+            <li class="list-group-item"><code>mx-*, my-*</code> = Margin horizontal, vertical</li>
+            <li class="list-group-item"><code>p-*</code> = Padding all sides</li>
+            <li class="list-group-item"><code>pt-*, pb-*, ps-*, pe-*</code> = Padding top, bottom, left, right</li>
+            <li class="list-group-item"><code>px-*, py-*</code> = Padding horizontal, vertical</li>
+            <li class="list-group-item"><code>ms-auto, me-auto</code> = Push element left or right</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

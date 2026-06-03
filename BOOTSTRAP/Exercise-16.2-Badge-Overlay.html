@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 16.2 - Badge Overlay with Position Absolute</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+        .badge-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 16.2: Badge Overlay with Absolute Positioning</h1>
+        <p class="lead">Using position-relative and position-absolute for badge overlays on images.</p>
+
+        <h3 class="mt-5">Product Cards with Badge Overlays</h3>
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/300x200?text=Product+1" class="card-img-top" alt="Product 1">
+                        <span class="badge bg-danger badge-overlay">New</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">High-quality product with new badge overlay.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/300x200?text=Product+2" class="card-img-top" alt="Product 2">
+                        <span class="badge bg-success badge-overlay">Hot</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">Popular product with hot sale badge.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/300x200?text=Product+3" class="card-img-top" alt="Product 3">
+                        <span class="badge bg-warning text-dark badge-overlay">Sale 50%</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">Limited offer with 50% discount.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Positioning Utilities Reference</h3>
+        <table class="table table-bordered mb-5">
+            <thead class="table-dark">
+                <tr>
+                    <th>Class</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>position-relative</code></td>
+                    <td>Create positioning context for absolute child elements</td>
+                </tr>
+                <tr>
+                    <td><code>position-absolute</code></td>
+                    <td>Position element relative to nearest positioned ancestor</td>
+                </tr>
+                <tr>
+                    <td><code>position-fixed</code></td>
+                    <td>Position element fixed to viewport</td>
+                </tr>
+                <tr>
+                    <td><code>top-0, bottom-0, start-0, end-0</code></td>
+                    <td>Edge positioning values</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="mt-5">Profile Image with Status Indicator</h3>
+        <div class="row mb-5">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="image-container p-3">
+                        <img src="https://via.placeholder.com/200x200?text=Avatar" class="img-fluid rounded-circle" alt="Avatar" style="width: 200px; height: 200px; object-fit: cover;">
+                        <span class="badge bg-success position-absolute" style="bottom: 20px; right: 20px; width: 20px; height: 20px;"></span>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">John Doe</h5>
+                        <p class="text-muted small">Online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Advanced Badge Positioning</h3>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="image-container mb-3">
+                        <img src="https://via.placeholder.com/200x150?text=Top+Left" class="img-fluid rounded" alt="Top Left">
+                        <span class="badge bg-primary position-absolute top-0 start-0 m-2">TL</span>
+                    </div>
+                    <p class="text-center">Top-Left Badge</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="image-container mb-3">
+                        <img src="https://via.placeholder.com/200x150?text=Top+Right" class="img-fluid rounded" alt="Top Right">
+                        <span class="badge bg-success position-absolute top-0 end-0 m-2">TR</span>
+                    </div>
+                    <p class="text-center">Top-Right Badge</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="image-container mb-3">
+                        <img src="https://via.placeholder.com/200x150?text=Bottom+Right" class="img-fluid rounded" alt="Bottom Right">
+                        <span class="badge bg-danger position-absolute bottom-0 end-0 m-2">BR</span>
+                    </div>
+                    <p class="text-center">Bottom-Right Badge</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Best Practices</h3>
+        <ul class="list-group mt-3">
+            <li class="list-group-item">Use <code>position-relative</code> on parent container</li>
+            <li class="list-group-item">Use <code>position-absolute</code> on child badge/overlay</li>
+            <li class="list-group-item">Combine with position utilities (top-0, right-0, etc.)</li>
+            <li class="list-group-item">Use margin utilities for fine-tuning position</li>
+            <li class="list-group-item">Test responsiveness on different screen sizes</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

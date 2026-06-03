@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 17.2 - Icon-Only Buttons</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5">Exercise 17.2: Icon-Only Buttons</h1>
+        <p class="lead">Replace text buttons with icon-only buttons using Bootstrap Icons.</p>
+
+        <h3 class="mt-5">Icon-Only Action Buttons</h3>
+        <div class="mb-5">
+            <button class="btn btn-primary" title="Edit"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-success" title="Add"><i class="bi bi-plus"></i></button>
+            <button class="btn btn-danger" title="Delete"><i class="bi bi-trash"></i></button>
+            <button class="btn btn-warning" title="Download"><i class="bi bi-download"></i></button>
+            <button class="btn btn-info" title="Share"><i class="bi bi-share"></i></button>
+            <button class="btn btn-secondary" title="Settings"><i class="bi bi-gear"></i></button>
+        </div>
+
+        <h3 class="mt-5">Icon-Only Outline Buttons</h3>
+        <div class="mb-5">
+            <button class="btn btn-outline-primary" title="Like"><i class="bi bi-heart"></i></button>
+            <button class="btn btn-outline-success" title="Check"><i class="bi bi-check-circle"></i></button>
+            <button class="btn btn-outline-danger" title="X"><i class="bi bi-x-circle"></i></button>
+            <button class="btn btn-outline-warning" title="Star"><i class="bi bi-star"></i></button>
+            <button class="btn btn-outline-info" title="Info"><i class="bi bi-info-circle"></i></button>
+        </div>
+
+        <h3 class="mt-5">Toolbar with Icon Buttons</h3>
+        <div class="btn-toolbar mb-5" role="toolbar">
+            <div class="btn-group me-2" role="group">
+                <button type="button" class="btn btn-outline-primary" title="Save"><i class="bi bi-save"></i></button>
+                <button type="button" class="btn btn-outline-primary" title="Edit"><i class="bi bi-pencil"></i></button>
+                <button type="button" class="btn btn-outline-primary" title="Delete"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="btn-group me-2" role="group">
+                <button type="button" class="btn btn-outline-secondary" title="Undo"><i class="bi bi-arrow-counterclockwise"></i></button>
+                <button type="button" class="btn btn-outline-secondary" title="Redo"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-secondary" title="Help"><i class="bi bi-question-circle"></i></button>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Icon Buttons in Cards</h3>
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Card</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary" title="Edit"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-outline-success" title="Like"><i class="bi bi-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Article Card</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary" title="Share"><i class="bi bi-share"></i></button>
+                            <button class="btn btn-sm btn-outline-info" title="Comment"><i class="bi bi-chat"></i></button>
+                            <button class="btn btn-sm btn-outline-warning" title="Save"><i class="bi bi-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Profile Card</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary" title="Follow"><i class="bi bi-person-plus"></i></button>
+                            <button class="btn btn-sm btn-outline-info" title="Message"><i class="bi bi-envelope"></i></button>
+                            <button class="btn btn-sm btn-outline-secondary" title="View"><i class="bi bi-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Navigation with Icon Buttons</h3>
+        <nav class="navbar navbar-light bg-light rounded mb-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-house-fill"></i> My Site
+                </a>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary" title="Search"><i class="bi bi-search"></i></button>
+                    <button class="btn btn-outline-secondary" title="Notifications"><i class="bi bi-bell"></i></button>
+                    <button class="btn btn-outline-secondary" title="User"><i class="bi bi-person-circle"></i></button>
+                </div>
+            </div>
+        </nav>
+
+        <h3 class="mt-5">Icon Button Sizes</h3>
+        <div class="mb-5">
+            <button class="btn btn-sm btn-primary"><i class="bi bi-plus"></i></button>
+            <button class="btn btn-primary"><i class="bi bi-plus"></i></button>
+            <button class="btn btn-lg btn-primary"><i class="bi bi-plus"></i></button>
+        </div>
+
+        <h3 class="mt-5">Icon Buttons with Text</h3>
+        <div class="mb-5">
+            <button class="btn btn-primary"><i class="bi bi-download"></i> Download</button>
+            <button class="btn btn-success"><i class="bi bi-check"></i> Confirm</button>
+            <button class="btn btn-danger"><i class="bi bi-x"></i> Cancel</button>
+            <button class="btn btn-warning"><i class="bi bi-star"></i> Rate</button>
+        </div>
+
+        <h3 class="mt-5">Best Practices</h3>
+        <ul class="list-group mt-3">
+            <li class="list-group-item">Always use <code>title</code> attribute for accessibility</li>
+            <li class="list-group-item">Icon-only works best for common, recognizable actions</li>
+            <li class="list-group-item">Combine icons with text when action is unclear</li>
+            <li class="list-group-item">Use consistent icon sizing throughout the interface</li>
+            <li class="list-group-item">Test with screen readers for accessibility</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
